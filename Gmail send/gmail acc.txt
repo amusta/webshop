@@ -1,0 +1,2 @@
+acc = autosender101@gmail.com
+pass = 12a1345e
