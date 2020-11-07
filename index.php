@@ -1,6 +1,8 @@
 <?php
 
 include('login/functions.php');
+include ('connection.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -290,6 +292,19 @@ include('login/functions.php');
         </div>
     </section>
     <!-- Categories Section End -->
+<?php $sql = "SELECT * FROM products";
+        $result = $conn->query($sql);
+?>
+    <?php /*
+    if ($result->num_rows > 0){
+
+    while($row = $result->fetch_assoc()) {
+    ?>
+
+    <div >
+        <?php /* echo '<img src="../img/'.$row["img"].'. " style="width:150px;height:200px;" >'; ?>  <?php }
+           } else { echo "0 results"; }*/ ?>
+    </div>
 
     <!-- Featured Section Begin -->
     <section class="featured spad">
@@ -313,7 +328,16 @@ include('login/functions.php');
             <div class="row featured__filter">
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg" > <?php
+                            if ($result->num_rows > 0){
+
+                            while($row = $result->fetch_assoc()) {
+                            ?>
+
+
+                                <?php  echo '<img src="../img/'.$row["img"].'. " style="width:150px;height:200px;" >'; ?>  <?php }
+           } else { echo "0 results"; } ?>
+
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
