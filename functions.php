@@ -52,7 +52,7 @@
 		$Adress      =  e($_POST['Adress']);
 		$City        =  e($_POST['City']);
 		$Phone       =  e($_POST['Phone']);
-		$createdat = e($_POST['Created_at']);
+        $createdat = e($_POST['Created_at']);
 
 		// form validation: ensure that the form is correctly filled
 		if (empty($username)) {
@@ -78,7 +78,7 @@
 						  VALUES('$username', '$email', '$user_type', '$password', '$Name', '$Last_name', '$Adress', '$City', '$Phone',CURRENT_TIMESTAMP())";
 				mysqli_query($db, $query);
 				$_SESSION['success']  = "New user successfully created!!";
-				header('location: home.php');
+				header('location: index.php');
 			}else{
 				$query = "INSERT INTO users (User_name, Email, User_type, Password_hash, First_name, Last_name, Adress, City, Phone, Created_at ) 
 						  VALUES('$username', '$email', 'user', '$password', '$Name', '$Last_name', '$Adress', '$City', '$Phone', CURRENT_TIMESTAMP())";
@@ -143,7 +143,7 @@
 					$_SESSION['user'] = $logged_in_user;
 					$_SESSION['success']  = "You are now logged in";
 
-					header('location: ../index.php');
+					header('location: index.php');
 				}
 			}else {
 				array_push($errors, "Wrong username/password combination");

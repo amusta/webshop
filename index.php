@@ -1,6 +1,6 @@
 <?php
 
-include('login/functions.php');
+include('functions.php');
 include ('connection.php');
 
 ?>
@@ -59,12 +59,12 @@ include ('connection.php');
 
                         <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
                     </div>
-                    <a href="login/logout.php"><i class="fa fa-user"></i> Logout</a>
+                    <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
 
                     <?php    if(isset($_SESSION['user'])) { } ?>
                 <?php } else { ?>
 
-                    <a href="login/login.php"><i class="fa fa-user"></i> Login</a>
+                    <a href="login.php"><i class="fa fa-user"></i> Login</a>
 
                 <?php } ?>
 
@@ -78,16 +78,15 @@ include ('connection.php');
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="shop-grid.php">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
                         <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                         <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
+
                     </ul>
                 </li>
-                <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -100,7 +99,7 @@ include ('connection.php');
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li><i class="fa fa-envelope"></i> autosender101@gmail.com</li>
                 <li>Free Shipping for all Order of $99</li>
             </ul>
         </div>
@@ -134,12 +133,12 @@ include ('connection.php');
 
                                     <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
                                     </div>
-                                    <a href="login/logout.php"><i class="fa fa-user"></i> Logout</a>
+                                    <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
 
                                     <?php    if(isset($_SESSION['user'])) { } ?>
                                 <?php } else { ?>
 
-                                    <a href="login/login.php"><i class="fa fa-user"></i> Login</a>
+                                    <a href="login.php"><i class="fa fa-user"></i> Login</a>
 
                                 <?php } ?>
 
@@ -165,16 +164,15 @@ include ('connection.php');
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="index.php">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li><a href="shop-grid.php">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
                                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
@@ -204,20 +202,16 @@ include ('connection.php');
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>All pets</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="#">Dog</a></li>
+                            <li><a href="#">Cat</a></li>
+                            <li><a href="#">Bird</a></li>
+                            <li><a href="#">Small animals</a></li>
+                            <li><a href="#">Raptiles</a></li>
+                            <li><a href="#">Fish</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -227,7 +221,7 @@ include ('connection.php');
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
-                                    <span class="arrow_carrot-down"></span>
+
                                 </div>
                                 <input type="text" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
@@ -243,10 +237,10 @@ include ('connection.php');
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+                    <div class="hero__item set-bg" data-setbg="img/hero/animali.png">
                         <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
+                            <span>SHOP</span>
+                            <h2>ALL FOR <br />YOUR PET</h2>
                             <p>Free Pickup and Delivery Available</p>
                             <a href="#" class="primary-btn">SHOP NOW</a>
                         </div>
@@ -295,15 +289,7 @@ include ('connection.php');
 <?php $sql = "SELECT * FROM products";
         $result = $conn->query($sql);
 ?>
-    <?php /*
-    if ($result->num_rows > 0){
 
-    while($row = $result->fetch_assoc()) {
-    ?>
-
-    <div >
-        <?php /* echo '<img src="../img/'.$row["img"].'. " style="width:150px;height:200px;" >'; ?>  <?php }
-           } else { echo "0 results"; }*/ ?>
     </div>
 
     <!-- Featured Section Begin -->
@@ -325,137 +311,40 @@ include ('connection.php');
                     </div>
                 </div>
             </div>
-            <div class="row featured__filter">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-1.jpg" > <?php
-                            if ($result->num_rows > 0){
-
-                            while($row = $result->fetch_assoc()) {
-                            ?>
 
 
-                                <?php  echo '<img src="../img/'.$row["img"].'. " style="width:150px;height:200px;" >'; ?>  <?php }
-           } else { echo "0 results"; } ?>
+               <div class="container">
+                <div class="row featured__filter">
+                    <?php
+                    if ($result->num_rows > 0){
 
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-2.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
+                    while($row = $result->fetch_assoc()) {
+                    ?>
+                    <div class="col-lg-4 text-center">
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" >
+                                    <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
+
+
+
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="#"><?php echo $row['name'];  ?></a></h6>
+                                <h5>$30.00</h5>
+                            </div>
                         </div>
                     </div>
+                    <?php }
+                    } else { echo "0 results"; } ?>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-3.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-4.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-5.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-6.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-7.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/featured/feature-8.jpg">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+               </div>
+
+
         </div>
     </section>
     <!-- Featured Section End -->
@@ -683,66 +572,7 @@ include ('connection.php');
     </section>
     <!-- Latest Product Section End -->
 
-    <!-- Blog Section Begin -->
-    <section class="from-blog spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title from-blog__title">
-                        <h2>From The Blog</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="img/blog/blog-1.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="img/blog/blog-2.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="img/blog/blog-3.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Visit the clean farm in the US</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Blog Section End -->
+
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">

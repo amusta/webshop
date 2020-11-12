@@ -1,3 +1,15 @@
+<?php
+
+include('functions.php');
+include ('connection.php');
+
+?>
+
+
+<?php $sql = "SELECT * FROM products";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -59,7 +71,7 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="shop-grid.php">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
@@ -137,7 +149,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="index.php">Home</a></li>
-                            <li class="active"><a href="./shop-grid.html">Shop</a></li>
+                            <li class="active"><a href="shop-grid.php">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
@@ -556,6 +568,14 @@
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                                    <?php if ($result->num_rows > 0){
+
+                                    while($row = $result->fetch_assoc()) {
+                                    ?>
+
+
+                                    <?php  echo '<img src="../img/'.$row["img"].'. " style="width:150px;height:200px;" >'; ?>  <?php }
+           } else { echo "0 results"; } ?>
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>

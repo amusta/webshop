@@ -180,7 +180,10 @@ ol {
 	padding: 13px 30px 12px;
 	background: #7fad39;
 	border: none;
+
 }
+
+
 
 /* Preloder */
 
@@ -559,6 +562,7 @@ ol {
 /*---------------------
   Hero
 -----------------------*/
+
 
 .hero {
 	padding-bottom: 50px;
@@ -2610,6 +2614,17 @@ ol {
 }
 
 /*---------------------
+  Login
+ */
+
+.login {
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
+/*---------------------
   Footer
 -----------------------*/
 
@@ -3465,4 +3480,10 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+
+
+
 }
+
+
+
