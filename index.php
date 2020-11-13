@@ -205,12 +205,12 @@ include ('connection.php');
                             <span>All pets</span>
                         </div>
                         <ul>
-                            <li><a href="#">Dog</a></li>
-                            <li><a href="#">Cat</a></li>
-                            <li><a href="#">Bird</a></li>
-                            <li><a href="#">Small animals</a></li>
-                            <li><a href="#">Raptiles</a></li>
-                            <li><a href="#">Fish</a></li>
+                            <li><a href="dog.php">Dog</a></li>
+                            <li><a href="cat.php">Cat</a></li>
+                            <li><a href="bird.php">Bird</a></li>
+                            <li><a href="small_animals.php">Small animals</a></li>
+                            <li><a href="reptile.php">Raptiles</a></li>
+                            <li><a href="fish.php">Fish</a></li>
 
                         </ul>
                     </div>

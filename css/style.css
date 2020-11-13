@@ -1045,7 +1045,7 @@ ol {
 .breadcrumb-section {
 	display: flex;
 	align-items: center;
-	padding: 45px 0 40px;
+	padding: 95px 0 40px;
 }
 
 .breadcrumb__text h2 {
@@ -1197,7 +1197,7 @@ ol {
 }
 
 .sidebar__item__color.sidebar__item__color--black label:after {
-	background: #252525;
+	background: #c9c1c1;
 }
 
 .sidebar__item__color.sidebar__item__color--blue label:after {
@@ -3485,5 +3485,189 @@ ol {
 
 }
 
+.checkout__order__food {
+    background: #3CC032;
+    padding: 40px;
+    padding-top: 30px;
+}
+
+.checkout__order__food ul {
+    margin-bottom: 12px;
+}
+
+.checkout__order__food ul li {
+    font-size: 16px;
+    color: #141414;
+    line-height: 40px;
+    list-style: none;
+	border-bottom: 1px solid gray;
+	width: 130px;
+}
 
 
+.checkout__order__food__h4 {
+    color: #1c1c1c;
+    font-weight: 700;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+}
+
+
+.checkout__order__toys {
+    background: #E9A625;
+    padding: 40px;
+    padding-top: 30px;
+}
+
+.checkout__order__toys ul {
+    margin-bottom: 12px;
+}
+
+.checkout__order__toys ul li {
+    font-size: 16px;
+    color: #141414;
+    line-height: 40px;
+    list-style: none;
+	border-bottom: 1px solid gray;
+	width: 130px;
+}
+
+
+.checkout__order__toys__h4 {
+    color: #1c1c1c;
+    font-weight: 700;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+
+.checkout__order__treats {
+    background: #D62D2D;
+    padding: 40px;
+    padding-top: 30px;
+}
+
+.checkout__order__treats ul {
+    margin-bottom: 12px;
+}
+
+.checkout__order__treats ul li {
+    font-size: 16px;
+    color: #141414;
+    line-height: 40px;
+    list-style: none;
+	border-bottom: 1px solid gray;
+	width: 130px;
+}
+
+
+.checkout__order__treats__h4 {
+    color: #1c1c1c;
+    font-weight: 700;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+
+.checkout__order__leads {
+    background: #c9c1c1;
+    padding: 40px;
+    padding-top: 30px;
+}
+
+.checkout__order__leads ul {
+    margin-bottom: 12px;
+}
+
+.checkout__order__leads ul li {
+    font-size: 16px;
+    color: #141414;
+    line-height: 40px;
+    list-style: none;
+	border-bottom: 1px solid gray;
+	width: 130px;
+}
+
+
+.checkout__order__leads__h4 {
+    color: #1c1c1c;
+    font-weight: 700;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.checkout__order__groom {
+    background: #249BC8;
+    padding: 40px;
+    padding-top: 30px;
+}
+
+.checkout__order__groom ul {
+    margin-bottom: 12px;
+}
+
+.checkout__order__groom ul li {
+    font-size: 16px;
+    color: #141414;
+    line-height: 40px;
+    list-style: none;
+	border-bottom: 1px solid gray;
+	width: 130px;
+}
+
+
+.checkout__order__groom__h4 {
+    color: #1c1c1c;
+    font-weight: 700;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    white-space: pre;
+
+}
+
+.checkout__order__bed {
+    background: #FFFFFF;
+    padding: 40px;
+    padding-top: 30px;
+    border: 1px solid black ;
+}
+
+.checkout__order__bed ul {
+    margin-bottom: 12px;
+}
+
+.checkout__order__bed ul li {
+    font-size: 16px;
+    color: #141414;
+    line-height: 40px;
+    list-style: none;
+	border-bottom: 1px solid gray;
+	width: 130px;
+}
+
+
+.checkout__order__bed__h4 {
+    color: #1c1c1c;
+    font-weight: 700;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    white-space: pre;
+
+}
+
+.top-buffer { margin-top:20px; }
+
+a:link {
+	color: black;
+}
+
+a:hover {
+	color: white;
+}

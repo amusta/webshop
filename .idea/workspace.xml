@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a974dd1-6c36-49dc-99a3-c0d3f60b4d6c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cat.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/contact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/functions.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/logout.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/register.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/reset-password.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-grid.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop-grid.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoping-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/shoping-cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,19 +23,22 @@
     <session id="-1738828267">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="27" />
-          <entry key="html" value="2" />
-          <entry key="php" value="72" />
+          <entry key="html" value="5" />
+          <entry key="php" value="78" />
           <entry key="style" value="1" />
           <entry key="txt" value="1" />
         </counts>
@@ -51,24 +46,24 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="28" />
-          <entry key="HTML" value="2" />
-          <entry key="PHP" value="72" />
+          <entry key="HTML" value="5" />
+          <entry key="PHP" value="78" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="104" />
+          <entry key="css" value="566" />
           <entry key="dummy" value="27" />
           <entry key="html" value="7" />
-          <entry key="php" value="8974" />
+          <entry key="php" value="10289" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="104" />
+          <entry key="CSS" value="566" />
           <entry key="HTML" value="18" />
-          <entry key="PHP" value="8963" />
+          <entry key="PHP" value="10278" />
           <entry key="PLAIN_TEXT" value="27" />
         </counts>
       </usages-collector>
@@ -79,26 +74,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shop-grid.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5950">
-              <caret line="571" lean-forward="true" selection-start-line="571" selection-end-line="571" />
+            <state relative-caret-position="9639">
+              <caret line="567" column="62" selection-start-line="567" selection-start-column="36" selection-end-line="567" selection-end-column="62" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../projekt/home.php">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="151" column="9" lean-forward="true" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
+            <state relative-caret-position="468">
+              <caret line="210" column="54" selection-start-line="210" selection-start-column="54" selection-end-line="210" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dog.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="120" column="86" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.php">
+        <entry file="file://$PROJECT_DIR$/cat.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="202" column="49" selection-start-line="202" selection-start-column="49" selection-end-line="202" selection-end-column="49" />
+            <state relative-caret-position="136">
+              <caret line="243" column="67" selection-start-line="243" selection-start-column="67" selection-end-line="243" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -106,8 +110,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-654">
-              <caret line="2934" column="21" selection-start-line="2934" selection-start-column="11" selection-end-line="2934" selection-end-column="21" />
+            <state relative-caret-position="605">
+              <caret line="3654" column="23" selection-start-line="3654" selection-start-column="23" selection-end-line="3654" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../projekt/home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="151" column="9" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -123,36 +136,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>logged</find>
-      <find>\&lt;\?php\ninclude\(\'\.\.\/connection\.php\'\)\;\nif \(isset\(\$_GET\[\&quot;key\&quot;\]\) \&amp;\&amp; isset\(\$_GET\[\&quot;email\&quot;\]\) \&amp;\&amp; isset\(\$_GET\[\&quot;action\&quot;\]\)\n    \&amp;\&amp; \(\$_GET\[\&quot;action\&quot;\]\=\=\&quot;reset\&quot;\) \&amp;\&amp; \!isset\(\$_POST\[\&quot;action\&quot;\]\)\)\{\n    \$key \= \$_GET\[\&quot;key\&quot;\]\;\n    \$email \= \$_GET\[\&quot;email\&quot;\]\;\n    \$curDate \= date\(\&quot;Y\-m\-d H\:i\:s\&quot;\)\;\n    \$query \= mysqli_query\(\$conn\,\n        \&quot;SELECT \* FROM \`password_reset_temp\` WHERE \`key\`\=\'\&quot;\.\$key\.\&quot;\' and \`email\`\=\'\&quot;\.\$email\.\&quot;\'\;\&quot;\n    \)\;\n    \$row \= mysqli_num_rows\(\$query\)\;\n    if \(\$row\=\=\&quot;\&quot;\)\{\n        \$error \.\= \'\&lt;h2\&gt;Invalid Link\&lt;\/h2\&gt;\n        \&lt;p\&gt;The link is invalid\/expired\. Either you did not copy the correct link\n            from the email\, or you have already used the key in which case it is \n        deactivated\.\&lt;\/p\&gt;\n\&lt;p\&gt;\&lt;a href\=\&quot;\.\.\/Gmail\%20send\/index\.php\&quot;\&gt;\nClick here\&lt;\/a\&gt; to reset password\.\&lt;\/p\&gt;\'\;\n    \}else\{\n        \$row \= mysqli_fetch_assoc\(\$query\)\;\n        \$expDate \= \$row\[\'expDate\'\]\;\n        if \(\$expDate \&gt;\= \$curDate\)\{\n            \?\&gt;\n            \&lt;br \/\&gt;\n            \&lt;form method\=\&quot;post\&quot; action\=\&quot;\&quot; name\=\&quot;update\&quot;\&gt;\n                \&lt;input type\=\&quot;hidden\&quot; name\=\&quot;action\&quot; value\=\&quot;update\&quot; \/\&gt;\n                \&lt;br \/\&gt;\&lt;br \/\&gt;\n                \&lt;label\&gt;\&lt;strong\&gt;Enter New Password\:\&lt;\/strong\&gt;\&lt;\/label\&gt;\&lt;br \/\&gt;\n                \&lt;input type\=\&quot;password\&quot; name\=\&quot;pass1\&quot; maxlength\=\&quot;15\&quot; required \/\&gt;\n                \&lt;br \/\&gt;\&lt;br \/\&gt;\n                \&lt;label\&gt;\&lt;strong\&gt;Re\-Enter New Password\:\&lt;\/strong\&gt;\&lt;\/label\&gt;\&lt;br \/\&gt;\n                \&lt;input type\=\&quot;password\&quot; name\=\&quot;pass2\&quot; maxlength\=\&quot;15\&quot; required\/\&gt;\n                \&lt;br \/\&gt;\&lt;br \/\&gt;\n                \&lt;input type\=\&quot;hidden\&quot; name\=\&quot;email\&quot; value\=\&quot;\&lt;\?php echo \$email\;\?\&gt;\&quot;\/\&gt;\n                \&lt;input type\=\&quot;submit\&quot; value\=\&quot;Reset Password\&quot; \/\&gt;\n            \&lt;\/form\&gt;\n            \&lt;\?php\n        \}else\{\n            \$error \.\= \&quot;\&lt;h2\&gt;Link Expired\&lt;\/h2\&gt;\n\&lt;p\&gt;The link is expired\. You are trying to use the expired link which \nas valid only 24 hours \(1 days after request\)\.\&lt;br \/\&gt;\&lt;br \/\&gt;\&lt;\/p\&gt;\&quot;\;\n        \}\n    \}\n    if\(\$error\!\=\&quot;\&quot;\)\{\n        echo \&quot;\&lt;div class\=\'error\'\&gt;\&quot;\.\$error\.\&quot;\&lt;\/div\&gt;\&lt;br \/\&gt;\&quot;\;\n    \}\n\} \/\/ isset email key validate end\n\n\nif\(isset\(\$_POST\[\&quot;email\&quot;\]\) \&amp;\&amp; isset\(\$_POST\[\&quot;action\&quot;\]\) \&amp;\&amp;\n    \(\$_POST\[\&quot;action\&quot;\]\=\=\&quot;update\&quot;\)\)\{\n    \$error\=\&quot;\&quot;\;\n    \$pass1 \= mysqli_real_escape_string\(\$conn\,\$_POST\[\&quot;pass1\&quot;\]\)\;\n    \$pass2 \= mysqli_real_escape_string\(\$conn\,\$_POST\[\&quot;pass2\&quot;\]\)\;\n    \$email \= \$_POST\[\&quot;email\&quot;\]\;\n    \$curDate \= date\(\&quot;Y\-m\-d H\:i\:s\&quot;\)\;\n    if \(\$pass1\!\=\$pass2\)\{\n        \$error\.\= \&quot;\&lt;p\&gt;Password do not match\, both password should be same\.\&lt;br \/\&gt;\&lt;br \/\&gt;\&lt;\/p\&gt;\&quot;\;\n    \}\n    if\(\$error\!\=\&quot;\&quot;\)\{\n        echo \&quot;\&lt;div class\=\'error\'\&gt;\&quot;\.\$error\.\&quot;\&lt;\/div\&gt;\&lt;br \/\&gt;\&quot;\;\n    \}else\{\n        \$pass1 \= md5\(\$pass1\)\;\n        mysqli_query\(\$conn\,\n            \&quot;UPDATE \`users\` SET \`Password_hash\`\=\'\&quot;\.\$pass1\.\&quot;\'\, \`Created_at\`\=\'\&quot;\.\$curDate\.\&quot;\' \nWHERE \`Email\`\=\'\&quot;\.\$email\.\&quot;\'\;\&quot;\n        \)\;\n\n        mysqli_query\(\$conn\,\&quot;DELETE FROM \`password_reset_temp\` WHERE \`email\`\=\'\&quot;\.\$email\.\&quot;\'\;\&quot;\)\;\n\n        echo \'\&lt;div class\=\&quot;error\&quot;\&gt;\&lt;p\&gt;Congratulations\! Your password has been updated successfully\.\&lt;\/p\&gt;\n\&lt;p\&gt;\&lt;a href\=\&quot;login\.php\&quot;\&gt;\nClick here\&lt;\/a\&gt; to Login\.\&lt;\/p\&gt;\&lt;\/div\&gt;\&lt;br \/\&gt;\'\;\n    \}\n\}\n\?\&gt;</find>
-      <find>ErrorInfo</find>
-      <find>o</find>
-      <find>oranges</find>
-      <find>crab</find>
-      <find>set-bn</find>
-      <find>style</find>
-      <find>center</find>
-      <find>col-lg-9</find>
-      <find>hero</find>
-      <find>foot</find>
-      <find>site-</find>
-      <find>logout</find>
-      <find>login_btn</find>
-      <find>search</find>
-      <find>sort By</find>
-      <find>hero-normal</find>
-      <find>site</find>
-      <find>alter</find>
-      <find>login</find>
-      <find>buttons</find>
-      <find>product</find>
-      <find>img</find>
-      <find>spad</find>
-      <find>con</find>
-      <find>container</find>
       <find>feature</find>
       <find>set-</find>
       <find>categories</find>
+      <find>Your Order</find>
+      <find>total</find>
+      <find>order</find>
+      <find>color</find>
+      <find>sidebar__item</find>
+      <find>sidebar__item__color--option</find>
+      <find>checkout</find>
+      <find>checkout__</find>
+      <find>product__item</find>
+      <find>checkout__order__products</find>
+      <find>idebar__item__color</find>
+      <find>checkout__order</find>
+      <find>sidebar__item__color</find>
+      <find>food</find>
+      <find>product__item__text</find>
+      <find>sidebar__item__color--black</find>
+      <find>product</find>
+      <find>leads</find>
+      <find>form_group</find>
+      <find>row</find>
+      <find>green</find>
+      <find>breadcrumb-section</find>
+      <find>col-lg-4 col-md-6 col-sm-6</find>
+      <find>checkout__order__groom</find>
+      <find>a:</find>
+      <find>home</find>
+      <find>all pets</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,11 +197,13 @@
         <option value="$PROJECT_DIR$/index-login.php" />
         <option value="$PROJECT_DIR$/reset-password.php" />
         <option value="$PROJECT_DIR$/functions.php" />
-        <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/register.php" />
-        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/shop-grid.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/register.php" />
+        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/dog.php" />
+        <option value="$PROJECT_DIR$/cat.php" />
       </list>
     </option>
   </component>
@@ -210,7 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,6 +241,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -237,12 +252,13 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Završni" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Završni" />
       <recent name="C:\xampp\htdocs\Završni\login" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Završni\css" />
+      <recent name="C:\xampp\htdocs\Završni" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -282,12 +298,14 @@
       <workItem from="1603280382962" duration="455000" />
       <workItem from="1603711310992" duration="11859000" />
       <workItem from="1605093149380" duration="9873000" />
-      <workItem from="1605177939203" duration="7619000" />
+      <workItem from="1605177939203" duration="8297000" />
+      <workItem from="1605266003699" duration="12066000" />
+      <workItem from="1605296302878" duration="4198000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56542000" />
+    <option name="totallyTimeSpent" value="73484000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -300,15 +318,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08901919" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09008529" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4030668" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4030668" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
@@ -323,25 +340,25 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.046908315" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="4" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="bottom" id="Find" order="6" weight="0.32968238" />
-      <window_info anchor="bottom" id="Run" order="7" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09008529" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4030668" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.329718" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -498,39 +515,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4182">
-          <caret line="246" column="64" selection-start-line="246" selection-start-column="64" selection-end-line="246" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#form#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="250" column="45" selection-start-line="250" selection-start-column="45" selection-end-line="250" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#form#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index-login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shop-grid.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5950">
-          <caret line="571" lean-forward="true" selection-start-line="571" selection-end-line="571" />
         </state>
       </provider>
     </entry>
@@ -541,24 +529,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../projekt/home.php">
+    <entry file="file://$PROJECT_DIR$/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="151" column="9" lean-forward="true" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
+        <state relative-caret-position="1734">
+          <caret line="102" column="6" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-654">
-          <caret line="2934" column="21" selection-start-line="2934" selection-start-column="11" selection-end-line="2934" selection-end-column="21" />
+        <state relative-caret-position="636">
+          <caret line="101" column="6" lean-forward="true" selection-start-line="36" selection-end-line="101" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/checkout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="333" column="69" selection-start-line="333" selection-start-column="44" selection-end-line="333" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop-grid.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9639">
+          <caret line="567" column="62" selection-start-line="567" selection-start-column="36" selection-end-line="567" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../projekt/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="151" column="9" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="202" column="49" selection-start-line="202" selection-start-column="49" selection-end-line="202" selection-end-column="49" />
+        <state relative-caret-position="468">
+          <caret line="210" column="54" selection-start-line="210" selection-start-column="54" selection-end-line="210" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="3654" column="23" selection-start-line="3654" selection-start-column="23" selection-end-line="3654" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="120" column="86" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="243" column="67" selection-start-line="243" selection-start-column="67" selection-end-line="243" selection-end-column="67" />
         </state>
       </provider>
     </entry>

@@ -48,17 +48,28 @@
         <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
     <div class="humberger__menu__widget">
-        <div class="header__top__right__language">
-            <img src="img/language.png" alt="">
-            <div>English</div>
-            <span class="arrow_carrot-down"></span>
-            <ul>
-                <li><a href="#">Spanis</a></li>
-                <li><a href="#">English</a></li>
-            </ul>
-        </div>
+
         <div class="header__top__right__auth">
-            <a href="#"><i class="fa fa-user"></i> Login</a>
+
+            <?php if (isLoggedIn()){ ?>
+                <div class="header__top__right__auth">
+
+                    <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+                </div>
+                <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
+
+                <?php    if(isset($_SESSION['user'])) { } ?>
+            <?php } else { ?>
+
+                <a href="login.php"><i class="fa fa-user"></i> Login</a>
+
+            <?php } ?>
+
+
+            <?php if (isAdmin()){ ?>
+                <a href="login/admin/home.php" class="button">AdminView</a>
+            <?php } ?>
+
         </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -73,7 +84,6 @@
 
                 </ul>
             </li>
-
             <li><a href="./contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -86,7 +96,7 @@
     </div>
     <div class="humberger__menu__contact">
         <ul>
-            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+            <li><i class="fa fa-envelope"></i> autosender101@gmail.com</li>
             <li>Free Shipping for all Order of $99</li>
         </ul>
     </div>
@@ -110,14 +120,25 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="header__top__right">
-                        <div class="header__top__right__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        </div>
                         <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                            <?php if (isLoggedIn()){ ?>
+                                <div class="header__top__right__auth">
+
+                                    <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+                                </div>
+                                <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
+
+                                <?php    if(isset($_SESSION['user'])) { } ?>
+                            <?php } else { ?>
+
+                                <a href="login.php"><i class="fa fa-user"></i> Login</a>
+
+                            <?php } ?>
+
+
+                            <?php if (isAdmin()){ ?>
+                                <a href="login/admin/home.php" class="button">AdminView</a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
