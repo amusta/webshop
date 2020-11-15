@@ -1180,7 +1180,7 @@ ol {
 
 .sidebar__item__color {
 	float: left;
-	width: 40%;
+	width: 55%;
 }
 
 .sidebar__item__color.sidebar__item__color--white label:after {
@@ -1213,12 +1213,14 @@ ol {
 	color: #333333;
 	position: relative;
 	padding-left: 32px;
+    padding-bottom: 20px;
 	cursor: pointer;
 }
 
 .sidebar__item__color label input {
 	position: absolute;
 	visibility: hidden;
+
 }
 
 .sidebar__item__color label:after {
@@ -3502,6 +3504,8 @@ ol {
     list-style: none;
 	border-bottom: 1px solid gray;
 	width: 130px;
+    margin-bottom: 20px;
+    white-space: pre;
 }
 
 
@@ -3532,6 +3536,8 @@ ol {
     list-style: none;
 	border-bottom: 1px solid gray;
 	width: 130px;
+    margin-bottom: 20px;
+    white-space: pre;
 }
 
 
@@ -3561,6 +3567,8 @@ ol {
     list-style: none;
 	border-bottom: 1px solid gray;
 	width: 130px;
+    margin-bottom: 20px;
+    white-space: pre;
 }
 
 
@@ -3590,6 +3598,8 @@ ol {
     list-style: none;
 	border-bottom: 1px solid gray;
 	width: 130px;
+    margin-bottom: 20px;
+    white-space: pre;
 }
 
 
@@ -3618,6 +3628,8 @@ ol {
     list-style: none;
 	border-bottom: 1px solid gray;
 	width: 130px;
+    margin-bottom: 20px;
+    white-space: pre;
 }
 
 
@@ -3649,6 +3661,9 @@ ol {
     list-style: none;
 	border-bottom: 1px solid gray;
 	width: 130px;
+    margin-bottom: 20px;
+
+
 }
 
 

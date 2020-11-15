@@ -203,12 +203,12 @@ $result = $conn->query($sql);
                         <span>All pets</span>
                     </div>
                     <ul>
-                        <li><a href="#">Dog</a></li>
-                        <li><a href="#">Cat</a></li>
-                        <li><a href="#">Bird</a></li>
-                        <li><a href="#">Small animals</a></li>
-                        <li><a href="#">Raptiles</a></li>
-                        <li><a href="#">Fish</a></li>
+                        <li><a href="dog.php">Dog</a></li>
+                        <li><a href="cat.php">Cat</a></li>
+                        <li><a href="bird.php">Bird</a></li>
+                        <li><a href="small_animals.php">Small animals</a></li>
+                        <li><a href="raptile.php">Raptiles</a></li>
+                        <li><a href="fish.php">Fish</a></li>
                     </ul>
                 </div>
             </div>
@@ -314,19 +314,19 @@ $result = $conn->query($sql);
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--black">
                             <label for="black">
-                                Leads and collars
+                                Litter & litter boxs
                                 <input type="radio" id="black">
                             </label>
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--blue">
                             <label for="blue">
-                                Grooming and care
+                                Tree & scratching posts
                                 <input type="radio" id="blue">
                             </label>
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--white">
                             <label for="white">
-                                Beds & baskets & crates
+                                Beds & baskets
                                 <input type="radio" id="white">
                             </label>
                         </div>

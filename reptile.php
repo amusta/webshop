@@ -241,7 +241,7 @@ $result = $conn->query($sql);
 <!-- Hero Section End -->
 
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/dogs.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="img/raptile.png">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -302,31 +302,31 @@ $result = $conn->query($sql);
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--gray">
                             <label for="gray">
-                                Toys
+                                Terrariums & cages
                                 <input type="radio" id="gray">
                             </label>
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--red">
                             <label for="red">
-                                Treats
+                                Lighting & heating
                                 <input type="radio" id="red">
                             </label>
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--black">
                             <label for="black">
-                                Leads and collars
+                                Cleaning
                                 <input type="radio" id="black">
                             </label>
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--blue">
                             <label for="blue">
-                                Grooming and care
+                                Thermometers
                                 <input type="radio" id="blue">
                             </label>
                         </div>
                         <div class="sidebar__item__color sidebar__item__color--white">
                             <label for="white">
-                                Beds & baskets & crates
+                                Bedding
                                 <input type="radio" id="white">
                             </label>
                         </div>
@@ -523,70 +523,70 @@ $result = $conn->query($sql);
                             <div class="checkout__order__food__h4"><a href="food.php">Food</a></div>
 
                             <ul>
-                                <li>Hill's</li>
-                                <li>Royal Canin</li>
-                                <li>Eucanuba </li>
+                                <li>Frozen</li>
+                                <li>Dry</li>
+                                <li>Live</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="checkout__order__toys">
-                            <div class="checkout__order__toys__h4"><a href="toys.php">Toys</a></div>
+                            <div class="checkout__order__toys__h4"><a href="toys.php">Terrariums & cages</a></div>
                             <ul>
-                                <li>KONG</li>
-                                <li>Soft toys</li>
-                                <li>Squeaker toys</li>
+                                <li>Tank/aquarium</li>
+                                <li>Air screen cage</li>
+                                <li>Paludarium</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="checkout__order__treats">
-                            <div class="checkout__order__treats__h4"><a href="treats.php">Treats</a></div>
+                            <div class="checkout__order__treats__h4"><a href="treats.php">Lighting & heating</a></div>
                             <ul>
-                                <li>Hill's</li>
-                                <li>Bosch</li>
-                                <li>>Trixie</li>
+                                <li>Ceramic heat emitter</li>
+                                <li>Day & night timer</li>
+                                <li>Moonlite bulbs</li>
                             </ul>
                         </div>
 
                     </div>
 
 
-            </div>
+                </div>
                 <div class="row top-buffer">
                     <div class="col-lg-4 col-md-6 col-sm-6 ">
                         <div class="checkout__order__leads">
-                            <div class="checkout__order__leads__h4"><a href="leads.php">Leads & collars</a></div>
+                            <div class="checkout__order__leads__h4"><a href="litter.php">Cleaning</a></div>
                             <ul>
-                                <li>flexi</li>
-                                <li>HUNTER</li>
-                                <li>JULIUS-K9</li>
+                                <li>Litter scoop</li>
+                                <li>Moss ball</li>
+                                <li>Filters</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="checkout__order__groom">
-                            <div class="checkout__order__groom__h4"><a href="grooming.php">Grooming & care</a></div>
+                            <div class="checkout__order__groom__h4"><a href="trees.php">Thermometers</a></div>
                             <ul>
-                                <li>Shampoo</li>
-                                <li>For shedding</li>
-                                <li>Clippers & scissors</li>
+                                <li>TG-1</li>
+                                <li>Helix</li>
+                                <li>ReptiTemp</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="checkout__order__bed">
-                            <div class="checkout__order__bed__h4"><a href="bed.php">Beds & crates</a></div>
+                            <div class="checkout__order__bed__h4"><a href="bed.php">Bedding</a></div>
                             <ul>
-                                <li>Outdoor beds</li>
-                                <li>Orthopaedic beds</li>
-                                <li>Soft crates</li>
+                                <li>Wood substrates</li>
+                                <li>Snad</li>
+                                <li>Coconut</li>
                             </ul>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
 
 
 </section>
