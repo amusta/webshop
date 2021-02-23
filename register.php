@@ -162,10 +162,10 @@
                                 <li><a href="./shop-details.html">Shop Details</a></li>
                                 <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                 <li><a href="./checkout.html">Check Out</a></li>
-                                <li><a href="./blog-details.html">Blog Details</a></li>
+
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
+
                         <li><a href="./contact.html">Contact</a></li>
                     </ul>
                 </nav>
@@ -195,20 +195,15 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span>All pets</span>
                     </div>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        <li><a href="dog.php">Dog</a></li>
+                        <li><a href="cat.php">Cat</a></li>
+                        <li><a href="bird.php">Bird</a></li>
+                        <li><a href="small_animals.php">Small animals</a></li>
+                        <li><a href="reptile.php">Raptiles</a></li>
+                        <li><a href="fish.php">Fish</a></li>
                     </ul>
                 </div>
             </div>
@@ -242,9 +237,9 @@
 
 <!-- registration -->
 <div class="container">
-    <div class="row">
+    <div class="rowfloat">
         <div class="col-sm" >
-            <h2>Registration</h2>
+            <h2>Sign up</h2>
             <form method="post" action="register.php">
 
                 <?php echo display_error(); ?>
@@ -261,13 +256,16 @@
                     <input type="password" placeholder="Password" name="password_1">
 
                 </div>
-                <div class="row">
+
+                <div class="row" style="margin-bottom: 15px;">
                     <input type="password" name="password_2" placeholder="Confirm password">
                 </div>
 
-                <div class="row-cols-" style="margin-bottom:20px ;">
-                    <button type="submit" class="site-btn" name="register_btn">Register</button>
+                <div class="row" style="margin-bottom:20px ;">
+                    <button type="submit" class="site-btn" name="register_btn">Sign up</button>
                 </div>
+
+
 
 
                 Already a member? <a href="login.php" style="color: gray">Sign in</a>

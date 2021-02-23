@@ -1,16 +1,14 @@
 <?php
 
+include ('connection.php');
 
 
 
 	session_start();
 
-	// connect to database
-	$db = mysqli_connect('localhost', 'root', '', 'pet_shop');
-
-
 
 	// variable declaration
+
 	$username = "";
 	$email    = "";
 	$Name     = "";
@@ -19,6 +17,16 @@
 	$City     = "";
 	$Phone    = null;
 	$createdat = date('Y-m-d H:i:s');
+
+	$name="";
+	$img="";
+	$description="";
+    $category="";
+    $animal="";
+    $price=null;
+    $weight=null;
+
+
 
 
 
@@ -37,10 +45,26 @@
 		login();
 	}
 
+	if(isset($_POST['product_btn'])){
+	    add_product();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// REGISTER USER
 	function register(){
-		global $db, $errors;
+		global $conn, $errors;
 
 		// receive all input values from the form
 		$username    =  e($_POST['username']);
@@ -76,16 +100,16 @@
 				$user_type = e($_POST['user_type']);
 				$query = "INSERT INTO users (User_name, Email, User_type, Password_hash, First_name, Last_name, Adress, City, Phone, Created_at ) 
 						  VALUES('$username', '$email', '$user_type', '$password', '$Name', '$Last_name', '$Adress', '$City', '$Phone',CURRENT_TIMESTAMP())";
-				mysqli_query($db, $query);
+				mysqli_query($conn, $query);
 				$_SESSION['success']  = "New user successfully created!!";
 				header('location: index.php');
 			}else{
 				$query = "INSERT INTO users (User_name, Email, User_type, Password_hash, First_name, Last_name, Adress, City, Phone, Created_at ) 
 						  VALUES('$username', '$email', 'user', '$password', '$Name', '$Last_name', '$Adress', '$City', '$Phone', CURRENT_TIMESTAMP())";
-				mysqli_query($db, $query);
+				mysqli_query($conn, $query);
 
 				// get id of the created user
-				$logged_in_user_id = mysqli_insert_id($db);
+				$logged_in_user_id = mysqli_insert_id($conn);
 
 				$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
 				$_SESSION['success']  = "You are now logged in";
@@ -98,19 +122,38 @@
 
 
 
+
+
 	// return user array from their id
 	function getUserById($id){
-		global $db;
+		global $conn;
 		$query = "SELECT * FROM users WHERE ID_User=" . $id;
-		$result = mysqli_query($db, $query);
+		$result = mysqli_query($conn, $query);
 
 		$user = mysqli_fetch_assoc($result);
 		return $user;
 	}
 
+	function getProductById($id){
+	    global $conn;
+	    $query="SELECT * FROM products WHERE id_product=" .$id;
+	    $result=mysqli_query($conn, $query);
+
+	    $product= mysqli_fetch_assoc($result);
+	    return $product;
+    }
+
+
+
+
+
+
+
+
+
 	// LOGIN USER
 	function login(){
-		global $db, $username, $errors;
+		global $conn, $username, $errors;
 
 		// grap form values
 		$username = e($_POST['username']);
@@ -129,7 +172,7 @@
 			$password = md5($password);
 
 			$query = "SELECT * FROM users WHERE User_name='$username' AND Password_hash='$password' LIMIT 1";
-			$results = mysqli_query($db, $query);
+			$results = mysqli_query($conn, $query);
 
 			if (mysqli_num_rows($results) == 1) { // user found
 				// check if user is admin or user
@@ -138,7 +181,7 @@
 
 					$_SESSION['user'] = $logged_in_user;
 					$_SESSION['success']  = "You are now logged in";
-					header('location: admin/home.php');		  
+					header('location: admin-home.php');
 				}else{
 					$_SESSION['user'] = $logged_in_user;
 					$_SESSION['success']  = "You are now logged in";
@@ -149,7 +192,8 @@
 				array_push($errors, "Wrong username/password combination");
 			}
 		}
-	}
+
+    }
 
 	function isLoggedIn()
 
@@ -172,8 +216,8 @@
 
 	// escape string
 	function e($val){
-		global $db;
-		return mysqli_real_escape_string($db, trim($val));
+		global $conn;
+		return mysqli_real_escape_string($conn, trim($val));
 	}
 
 	function display_error() {
@@ -187,6 +231,90 @@
 			echo '</div>';
 		}
 	}
+
+	function add_product(){
+
+            global $conn, $errors;
+            // receive all input values from the form
+
+
+            $name=e($_POST['name']);
+            $description=e($_POST['description']);
+            $category=e($_POST['category']);
+            $animal=e($_POST['animal']);
+            $price=e($_POST['price']);
+            $weight=e($_POST['weight']);
+            $img=e($_POST['img']);
+
+
+
+        // form validation: ensure that the form is correctly filled
+            if (empty($name)) {
+                array_push($errors, "Add product name");
+            }
+        if (empty($img)) {
+            array_push($errors, "Add product img");
+        }
+
+            if (empty($description)) {
+                array_push($errors, "Add product description ");
+            }
+            if (empty($category)) {
+                array_push($errors, "Add product category");
+            }
+            if (empty($animal)) {
+                array_push($errors, "Add animal");
+            }
+            if (empty($price)) {
+                array_push($errors, "Add price");
+            }
+            if (empty($weight)) {
+                array_push($errors, "Add weight");
+            }
+
+
+
+
+
+
+
+               $query = "INSERT INTO products (name, img, description, category, animal, price, weight)
+						  VALUES('$name', '$img', '$description', '$category', '$animal', '$price', '$weight')";
+                mysqli_query($conn, $query);
+                $_SESSION['success']  = "New movie successfully created!!";
+
+
+    }
+
+function delete($id){
+    global $conn;
+
+
+
+    $sql = "DELETE FROM users WHERE ID_users='$id'";
+
+
+    if (mysqli_query($conn, $sql)) {
+
+        echo "<br/><br/><span>Deleted successfully...!!</span>";
+    } else {
+        echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+    }
+
+}
+	function delete_product($id)
+    {
+        global $conn;
+        $sql = "DELETE FROM products WHERE id_product='$id'";
+
+
+        if (mysqli_query($conn, $sql)) {
+
+            echo "<br/><br/><span>Deleted successfully...!!</span>";
+        } else {
+            echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
 
 
 

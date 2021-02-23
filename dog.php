@@ -207,7 +207,7 @@ $result = $conn->query($sql);
                         <li><a href="cat.php">Cat</a></li>
                         <li><a href="bird.php">Bird</a></li>
                         <li><a href="small_animals.php">Small animals</a></li>
-                        <li><a href="raptile.php">Raptiles</a></li>
+                        <li><a href="reptile.php">Raptiles</a></li>
                         <li><a href="fish.php">Fish</a></li>
                     </ul>
                 </div>
@@ -220,7 +220,7 @@ $result = $conn->query($sql);
                                 All Categories
                                 <span class="arrow_carrot-down"></span>
                             </div>
-                            <input type="text" placeholder="What do yo u need?">
+                            <input type="text" placeholder="What do yo u need?" >
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
@@ -246,7 +246,7 @@ $result = $conn->query($sql);
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Organi Shop</h2>
+                    <h2>Shop</h2>
                     <div class="breadcrumb__option">
                         <a href="index.php">Home</a>
                         <span>Shop</span>
@@ -520,7 +520,7 @@ $result = $conn->query($sql);
                 <div class="row ">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="checkout__order__food">
-                            <div class="checkout__order__food__h4"><a href="food.php">Food</a></div>
+                            <div class="checkout__order__food__h4"><a href="food_dog.php">Food</a></div>
 
                             <ul>
                                 <li>Hill's</li>

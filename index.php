@@ -3,6 +3,18 @@
 include('functions.php');
 include ('connection.php');
 
+
+
+        $sql = "SELECT * FROM products ";
+        $result =$conn->query($sql);
+
+        if(!empty($_REQUEST['term'])){
+            $term=$_REQUEST['term'];
+
+            $sql= "SELECT * FROM products WHERE name LIKE '%" . $term . "%'";
+            $result=$conn->query($sql);
+        }
+
 ?>
 
 <!DOCTYPE html>
@@ -144,7 +156,7 @@ include ('connection.php');
 
 
                                 <?php if (isAdmin()){ ?>
-                                    <a href="login/admin/home.php" class="button">AdminView</a>
+                                    <a href="admin-home.php" class="button">AdminView</a>
                                 <?php } ?>
                             </div>
 
@@ -223,8 +235,8 @@ include ('connection.php');
                                     All Categories
 
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="What do yo u need? "name="term" >
+                                <button type="submit" class="site-btn"  >SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -286,9 +298,12 @@ include ('connection.php');
         </div>
     </section>
     <!-- Categories Section End -->
-<?php $sql = "SELECT * FROM products";
-        $result = $conn->query($sql);
-?>
+
+
+
+
+
+
 
     </div>
 
@@ -316,37 +331,43 @@ include ('connection.php');
                <div class="container">
                 <div class="row featured__filter">
                     <?php
-                    if ($result->num_rows > 0){
-
-                    while($row = $result->fetch_assoc()) {
-                    ?>
-                    <div class="col-lg-4 text-center">
-                        <div class="featured__item">
-                            <div class="featured__item__pic set-bg" >
-                                    <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
 
 
 
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#"><?php echo $row['name'];  ?></a></h6>
-                                <h5>$30.00</h5>
+                        if ($result->num_rows > 0){
+
+                        while($row = $result->fetch_assoc()) {
+                        ?>
+                        <div class="col-lg-4 text-center">
+
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg" >
+                                        <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
+
+
+
+                                    <ul class="featured__item__pic__hover">
+                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="featured__item__text">
+                                    <h6><a href="#"><?php echo $row['name'];  ?></a></h6>
+                                    <h5><?php echo $row['price'];  ?>$</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php }
-                    } else { echo "0 results"; } ?>
+                        <?php }
+                        } else { echo "0 results"; }
+                        ?>
                 </div>
                </div>
 
 
         </div>
     </section>
+
     <!-- Featured Section End -->
 
     <!-- Banner Begin -->

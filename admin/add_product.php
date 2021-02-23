@@ -1,59 +1,3 @@
-<?php include('../functions.php') ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Create movies</title>
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<style>
-		.header {
-			background: #003366;
-		}
-		button[name=create_movie_btn] {
-			background: #003366;
-		}
-	</style>
-</head>
-<body>
-	<div class="header">
-		<h2>Admin - create movie</h2>
-	</div>
-	
-	<form method="post" action="create_movie.php">
-
-		<?php echo display_error(); ?>
-
-		<div class="input-group">
-			<label>Movie name</label>
-			<input type="text" name="Name" value="<?php echo $Name; ?>">
-		</div>
-		<div class="input-group">
-			<label>Genre</label>
-			<input type="text" name="Genre" value="<?php echo $Genre; ?>">
-		</div>
-
-
-        <div class="input-group">
-            <label>Year</label>
-            <input type="number" name="Year" value="<?php echo $Year; ?>">
-        </div>
-
-
-        <div class="input-group">
-            <label>Pics</label>
-        <input type="file" name="Img" id="Img">
-        </div>
-
-        <div class="input-group">
-            <label>Quantity</label>
-            <input type="number" name="quantity" value="<?php echo $quantity; ?>">
-        </div>
-		<div class="input-group">
-			<button type="submit" class="btn" name="create_movie_btn"> + Add movie</button>
-		</div>
-	</form>
-
-
-</body>
 
 
 
@@ -299,59 +243,47 @@
 <div class="container">
     <div class="rowfloat">
         <div class="col-sm" >
-            <h2>Sign up</h2>
+            <h2>Add new product</h2>
 
 
 
-            <form method="post" action="create_user.php">
+
+
+            <form method="post" action="add_product.php">
 
                 <?php echo display_error(); ?>
 
                 <div class="row">
-                    <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>">
+                    <input type="text" name="name" placeholder="Name " value="<?php echo $name; ?>">
+                </div>
+                <div class="row">
+                    <input type="text" name="img" placeholder="Image ">
+                </div>
+
+                <div class="row">
+
+                    <input type="text" name="description" placeholder="Description">
                 </div>
                 <div class="row">
 
-                    <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>">
-                </div>
-                <div class="row">
-                    <label>User type</label>
-                    <select name="user_type" id="user_type" >
-                        <option value=""></option>
-                        <option value="admin">Admin</option>
-                        <option value="user">User</option>
-                    </select>
+                    <input type="text" name="category" placeholder="Category">
                 </div>
                 <div class="row">
 
-                    <input type="password" name="password_1" placeholder="Password">
+                    <input type="text" name="animal" placeholder="Animal" value="<?php echo $animal; ?>">
                 </div>
                 <div class="row">
 
-                    <input type="password" name="password_2" placeholder="Confirm password">
+                    <input type="number" name="price" placeholder="Price" value="<?php echo $price; ?>">
                 </div>
                 <div class="row">
 
-                    <input type="text" name="Name" placeholder="Name" value="<?php echo $Name; ?>">
+                    <input type="number" name="weight" placeholder="Weight" value="<?php echo $weight; ?>">
                 </div>
-                <div class="row">
 
-                    <input type="text" name="Last_name" placeholder="Last name" value="<?php echo $Last_name; ?>">
-                </div>
-                <div class="row">
 
-                    <input type="text" name="Adress" placeholder="Adress" value="<?php echo $Adress; ?>">
-                </div>
                 <div class="row">
-
-                    <input type="text" name="City" placeholder="City" value="<?php echo $City; ?>">
-                </div>
-                <div class="row">
-
-                    <input type="tel" name="Phone" placeholder="Phone" value="<?php echo $Phone; ?>">
-                </div>
-                <div class="row">
-                    <button type="submit" class="site-btn" name="register_btn" > + Create user</button>
+                    <button type="submit" class="site-btn" name="product_btn" > + Create product</button>
                 </div>
             </form>
 

@@ -520,7 +520,7 @@ $result = $conn->query($sql);
                 <div class="row ">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="checkout__order__food">
-                            <div class="checkout__order__food__h4"><a href="food.php">Food</a></div>
+                            <div class="checkout__order__food__h4"><a href="food_dog.php">Food</a></div>
 
                             <ul>
                                 <li>Frozen</li>

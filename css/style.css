@@ -1045,19 +1045,22 @@ ol {
 .breadcrumb-section {
 	display: flex;
 	align-items: center;
-	padding: 95px 0 40px;
+	padding: 150px 0 40px;
+
+
 }
 
 .breadcrumb__text h2 {
 	font-size: 46px;
-	color: #ffffff;
-	font-weight: 700;
+	color: black;
+	font-weight: 900;
+	margin-bottom: 10px;
 }
 
 .breadcrumb__option a {
 	display: inline-block;
 	font-size: 16px;
-	color: #ffffff;
+	color: black;
 	font-weight: 700;
 	margin-right: 20px;
 	position: relative;
@@ -1069,14 +1072,14 @@ ol {
 	top: 13px;
 	height: 1px;
 	width: 10px;
-	background: #ffffff;
+	background: black;
 	content: "";
 }
 
 .breadcrumb__option span {
 	display: inline-block;
 	font-size: 16px;
-	color: #ffffff;
+	color: black;
 }
 
 /*---------------------
@@ -1893,6 +1896,7 @@ ol {
 
 .shoping__cart__table table {
 	width: 100%;
+
 	text-align: center;
 }
 
@@ -1918,18 +1922,27 @@ ol {
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item {
-	width: 630px;
+	width: 150px;
 	text-align: left;
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item img {
 	display: inline-block;
 	margin-right: 25px;
+    width: 350px;
+    height: 150px;
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item h5 {
 	color: #1c1c1c;
 	display: inline-block;
+}
+
+.shoping__cart__table table table tr td.shopping__cart__name {
+    font-size: 18px;
+    color: #1c1c1c;
+    font-weight: 700;
+    width: 100px;
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__price {
@@ -3685,4 +3698,9 @@ a:link {
 
 a:hover {
 	color: white;
+}
+
+.rowfloat{
+
+    padding-left: 300px;
 }

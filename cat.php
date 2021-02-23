@@ -207,7 +207,7 @@ $result = $conn->query($sql);
                         <li><a href="cat.php">Cat</a></li>
                         <li><a href="bird.php">Bird</a></li>
                         <li><a href="small_animals.php">Small animals</a></li>
-                        <li><a href="raptile.php">Raptiles</a></li>
+                        <li><a href="reptile.php">Raptiles</a></li>
                         <li><a href="fish.php">Fish</a></li>
                     </ul>
                 </div>
@@ -520,7 +520,7 @@ $result = $conn->query($sql);
                 <div class="row ">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="checkout__order__food">
-                            <div class="checkout__order__food__h4"><a href="food.php">Food</a></div>
+                            <div class="checkout__order__food__h4"><a href="food_cat.php">Food</a></div>
 
                             <ul>
                                 <li>Hill's</li>
