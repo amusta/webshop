@@ -62,7 +62,7 @@ your account and change your security password as someone may have guessed it.</
         $mail->SMTPSecure = "tls";
         $mail->Username = "autosender101@gmail.com"; // Enter your email here
         $mail->Password = "12a1345e"; //Enter your password here
-        $mail->Port = '587';
+        $mail->Port = '587' ;
         $mail->IsHTML(true);
         $mail->From = "autosender101@gmail.com";
         $mail->FromName = "AllPHPTricks";

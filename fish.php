@@ -86,7 +86,7 @@ $result = $conn->query($sql);
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="shoping-cart.php">Shoping Cart</a></li>
                     <li><a href="./checkout.html">Check Out</a></li>
 
                 </ul>
@@ -167,7 +167,7 @@ $result = $conn->query($sql);
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
-                                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                <li><a href="shoping-cart.php">Shoping Cart</a></li>
                                 <li><a href="./checkout.html">Check Out</a></li>
                             </ul>
                         </li>

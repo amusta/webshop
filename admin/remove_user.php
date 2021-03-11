@@ -96,7 +96,7 @@ if(!empty($_REQUEST['term'])) {
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="../shop-details.html">Shop Details</a></li>
-                    <li><a href="../shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="../shoping-cart.php">Shoping Cart</a></li>
                     <li><a href="../checkout.html">Check Out</a></li>
 
                 </ul>
@@ -177,7 +177,7 @@ if(!empty($_REQUEST['term'])) {
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="../shop-details.html">Shop Details</a></li>
-                                <li><a href="../shoping-cart.html">Shoping Cart</a></li>
+                                <li><a href="../shoping-cart.php">Shoping Cart</a></li>
                                 <li><a href="../checkout.html">Check Out</a></li>
 
                             </ul>
@@ -286,7 +286,7 @@ if(!empty($_REQUEST['term'])) {
 
                         if (isset($_GET['ID'])) {
                             delete($_GET['ID']);
-                            break;
+
                         }
                     }
     ?>

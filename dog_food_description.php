@@ -5,7 +5,12 @@ include ('connection.php');
 
 
 
-$sql = "SELECT * FROM products WHERE id_product='" . $_GET['ID'] . "'";
+if(isset($_GET['ID'])) {
+    $sql = "SELECT * FROM products WHERE id_product='" . $_GET['ID'] . "'";
+}
+else {
+    $sql = "SELECT * FROM products ";
+}
 $result = $conn->query($sql);
 
 
@@ -17,11 +22,10 @@ if(!empty($_REQUEST['term'])){
 
 
 
-    $logged_in_user_id = mysqli_insert_id($conn);
 
-    $_SESSION['id_product'] = getUserById($logged_in_user_id); // put logged in user in session
 
 }
+
 
 ?>
 
@@ -94,7 +98,7 @@ if(!empty($_REQUEST['term'])){
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                    <li><a href="shoping-cart.php">Shoping Cart</a></li>
                     <li><a href="./checkout.html">Check Out</a></li>
                 </ul>
             </li>
@@ -128,9 +132,9 @@ if(!empty($_REQUEST['term'])){
                 </div>
                 <div class="col-lg-6">
                     <div class="header__top__right">
-                        <?php if (isLoggedIn()){ ?>
-                        <div class="header__top__right__auth">
 
+                        <div class="header__top__right__auth">
+                            <?php if (isLoggedIn()){ ?>
                             <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
                         </div>
                             <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
@@ -167,7 +171,7 @@ if(!empty($_REQUEST['term'])){
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
-                                <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                <li><a href="shoping-cart.php">Shoping Cart</a></li>
                                 <li><a href="./checkout.html">Check Out</a></li>
                             </ul>
                         </li>
@@ -269,6 +273,7 @@ if(!empty($_REQUEST['term'])){
 
                         while($row = $result->fetch_assoc()) { ?>
                         <img class="product__details__pic__item--large"
+
                             <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
                     </div>
 
@@ -288,6 +293,7 @@ if(!empty($_REQUEST['term'])){
                     </div>
                     <div class="product__details__price">  <?php  echo $row['price']; ?> $ </div>
                     <p> <?php  echo $row['description']; ?> </p>
+                    <?php if (isLoggedIn()){ ?>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -295,12 +301,22 @@ if(!empty($_REQUEST['term'])){
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">ADD TO CARD</a>
+
+
+                     <?php  echo "<a href='dog_food_description.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."'  class=\"primary-btn\" name=\"add\">ADD TO CARD "  ; ?>
+
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <?php } else { ?>
+                    <span>You need to be logged in to buy.</span>
+                    <?php } ?>
+
+
+
+
                     <ul>
                         <li><b>Availability</b> <span>In Stock</span></li>
                         <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                        <li><b>Weight</b> <span><?php  echo $row['weight']; ?></span></li>
+                        <li><b>Weight</b> <span><?php  echo $row['weight']; ?> Kg</span></li>
 
                     </ul>
                 </div>
@@ -341,12 +357,32 @@ if(!empty($_REQUEST['term'])){
                             <div class="product__details__tab__desc">
 
 
+                                <?php  echo "<a href='review.php?ID=". $row["id_product"] ."' class=\"site-btn\" > Review " ; ?>
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <?php } ?>
+
+            <?php
+
+            if (isset($_GET['id_product'])) {
+                if( isset($_GET['id_user'])) {
+
+                    add_to_cart($_GET['id_product'], $_GET['id_user']);
+                }}
+
+
+
+            ?>
+
         </div>
     </div>
 </section>

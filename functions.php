@@ -18,6 +18,7 @@ include ('connection.php');
 	$Phone    = null;
 	$createdat = date('Y-m-d H:i:s');
 
+
 	$name="";
 	$img="";
 	$description="";
@@ -26,7 +27,8 @@ include ('connection.php');
     $price=null;
     $weight=null;
 
-
+    $comments = "";
+    $rating = null;
 
 
 
@@ -48,15 +50,6 @@ include ('connection.php');
 	if(isset($_POST['product_btn'])){
 	    add_product();
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -134,14 +127,7 @@ include ('connection.php');
 		return $user;
 	}
 
-	function getProductById($id){
-	    global $conn;
-	    $query="SELECT * FROM products WHERE id_product=" .$id;
-	    $result=mysqli_query($conn, $query);
 
-	    $product= mysqli_fetch_assoc($result);
-	    return $product;
-    }
 
 
 
@@ -281,8 +267,74 @@ include ('connection.php');
                $query = "INSERT INTO products (name, img, description, category, animal, price, weight)
 						  VALUES('$name', '$img', '$description', '$category', '$animal', '$price', '$weight')";
                 mysqli_query($conn, $query);
-                $_SESSION['success']  = "New movie successfully created!!";
+                $_SESSION['success']  = "New product successfully created!!";
 
+
+    }
+
+	function add_to_cart($id_product, $id_user) {
+        global $conn;
+        $sql = "INSERT INTO cart (ID_users, id_product) VALUES ($id_user, $id_product)" ;
+        mysqli_query($conn, $sql);
+
+        if (mysqli_query($conn, $sql)) {
+
+            echo "<br/><br/><span>Updated successfully...!!</span>";
+        } else {
+            echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+        }
+
+    }
+
+function add_comment( $id_user, $id_product) {
+    global $conn, $errors;
+
+
+    $comments=e($_POST['comments']);
+
+
+    if (empty($comments)) {
+        array_push($errors, "Add your comment");
+    }
+    $rating =  e($_POST['rating']);
+    if (empty($rating)) {
+        array_push($errors, "Add rating");
+    }
+    $sql = "INSERT INTO review (ID_users, id_product, comments, rating) VALUES ($id_user, $id_product, '$comments', '$rating')" ;
+    mysqli_query($conn, $sql);
+
+
+    if (mysqli_query($conn, $sql)) {
+
+        echo "<br/><br/><span>Updated successfully...!!</span>";
+    } else {
+        echo "Error: CAN'T UPDATE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+    }
+
+
+}
+
+	function remove_from_cart($id_product, $id_user){
+	    global $conn;
+	    $sql= "DELETE FROM cart WHERE ID_users=$id_user AND id_product=$id_product";
+	    if (mysqli_query($conn, $sql)){
+	         echo "<br/><br/><span>Deleted successfully...!!</span>";
+            } else {
+                    echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+                    }
+
+
+    }
+
+	function update_cart($quantity){
+	    global $conn;
+
+	    $sql ="INSERT INTO cart (quantity) VALUES ($quantity) ";
+        if (mysqli_query($conn, $sql)){
+            echo "<br/><br/><span>Updated successfully...!!</span>";
+        } else {
+            echo "Error: CAN'T UPDATE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+        }
 
     }
 
@@ -292,6 +344,7 @@ function delete($id){
 
 
     $sql = "DELETE FROM users WHERE ID_users='$id'";
+
 
 
     if (mysqli_query($conn, $sql)) {
@@ -315,6 +368,8 @@ function delete($id){
             echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
         }
     }
+
+
 
 
 

@@ -1,3 +1,29 @@
+<?php
+include ('connection.php');
+include('functions.php');
+
+
+
+$sql ="SELECT products.id_product,  products.img, products.name, products.weight, products.price
+FROM cart 
+INNER JOIN products  ON products.id_product =cart.id_product
+INNER JOIN users ON users.ID_users=cart. ID_users";
+$result = $conn->query($sql);
+
+
+if(!empty($_REQUEST['term'])){
+    $term=$_REQUEST['term'];
+
+    $sql= "SELECT * FROM products WHERE name LIKE '%" . $term . "%' ";
+    $result=$conn->query($sql);
+
+
+
+
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -43,18 +69,22 @@
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
         <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
+            <?php if (isLoggedIn()){ ?>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
             </div>
+            <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
+
+            <?php    if(isset($_SESSION['user'])) { } ?>
+            <?php } else { ?>
+
+            <a href="login.php"><i class="fa fa-user"></i> Login</a>
+
+            <?php } ?>
+
+            <?php if (isAdmin()){ ?>
+            <a href="login/admin/home.php" class="button">AdminView</a>
+            <?php } ?>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
@@ -63,12 +93,11 @@
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                        <li><a href="shoping-cart.php">Shoping Cart</a></li>
                         <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
                     </ul>
                 </li>
-                <li><a href="./blog.html">Blog</a></li>
+
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -81,7 +110,7 @@
         </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <li><i class="fa fa-envelope"></i> autosender101@gmail.com</li>
                 <li>Free Shipping for all Order of $99</li>
             </ul>
         </div>
@@ -96,30 +125,32 @@
                     <div class="col-lg-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li><i class="fa fa-envelope"></i>autosender101@gmail.com</li>
                                 <li>Free Shipping for all Order of $99</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="header__top__right">
-                            <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
+                            <?php if (isLoggedIn()){ ?>
+
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+
+                                <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+                            </div>
+                            <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
+
+                            <?php    if(isset($_SESSION['user'])) { } ?>
+                            <?php } else { ?>
+
+                                <a href="login.php"><i class="fa fa-user"></i> Login</a>
+
+                            <?php } ?>
+
+
+                            <?php if (isAdmin()){ ?>
+                                <a href="login/admin/home.php" class="button">AdminView</a>
+                            <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -141,12 +172,10 @@
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="shoping-cart.php">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
                     </nav>
@@ -179,17 +208,12 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="dog.php">Dog</a></li>
+                            <li><a href="cat.php">Cat</a></li>
+                            <li><a href="bird.php">Bird</a></li>
+                            <li><a href="small_animals.php">Small animals</a></li>
+                            <li><a href="reptile.php">Raptiles</a></li>
+                            <li><a href="fish.php">Fish</a></li>
                         </ul>
                     </div>
                 </div>
@@ -201,7 +225,7 @@
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" placeholder="What do yo u need?" name="term">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -256,17 +280,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                           <?php
+
+                            while($row = $result->fetch_assoc()) { ?>
+
+
                                 <tr>
+
                                     <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
+
+                                        <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
+                                        <h5><?php echo $row['name']; ?></h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $55.00
+                                       <?php echo $row['price'];  ?> $
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
+
+
                                                 <input type="text" value="1">
                                             </div>
                                         </div>
@@ -274,83 +307,56 @@
                                     <td class="shoping__cart__total">
                                         $110.00
                                     </td>
+
                                     <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
+                                        <?php  echo "<a href='shoping-cart.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."'  class=\"icon_close\" > "  ; ?>
+
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $39.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $39.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $69.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $69.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
+
+
                             </tbody>
+                            <?php  } ?>
                         </table>
                     </div>
+                    <?php
+
+
+                    if (isset($_GET['id_product'])) {
+                        if( isset($_GET['id_user'])) {
+
+                            remove_from_cart($_GET['id_product'], $_GET['id_user']);
+                        }}
+
+                    ?>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        <a href="shop-grid.php" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <?php  echo "<a href='shoping-cart.php?quantity=". $row["quantity"] ."'  class=\"primary-btn cart-btn cart-btn-right\" name=\"add\">Update cart "  ; ?>
+                        <a href="" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             Upadate Cart</a>
                     </div>
+                    <?php
+                        if(isset($_GET['quantity'])){
+                            update_cart($_GET['quantity']);
+                        }
+
+
+                    ?>
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
+
                             <li>Total <span>$454.98</span></li>
                         </ul>
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
@@ -365,67 +371,55 @@
     <footer class="footer spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__about__logo">
-                            <a href="index.php"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                    <div class="footer__widget">
-                        <h6>Useful Links</h6>
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">About Our Shop</a></li>
-                            <li><a href="#">Secure Shopping</a></li>
-                            <li><a href="#">Delivery infomation</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">Who We Are</a></li>
-                            <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Projects</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Innovation</a></li>
-                            <li><a href="#">Testimonials</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="footer__widget">
-                        <h6>Join Our Newsletter Now</h6>
-                        <p>Get E-mail updates about our latest shop and special offers.</p>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your mail">
-                            <button type="submit" class="site-btn">Subscribe</button>
-                        </form>
-                        <div class="footer__widget__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
-                    </div>
-                </div>
+    <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+        <div class="footer__widget">
+            <h6>Useful Links</h6>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">About Our Shop</a></li>
+                <li><a href="#">Secure Shopping</a></li>
+                <li><a href="#">Delivery infomation</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Our Sitemap</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">Who We Are</a></li>
+                <li><a href="#">Our Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Innovation</a></li>
+                <li><a href="#">Testimonials</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-12">
+        <div class="footer__widget">
+            <h6>Join Our Newsletter Now</h6>
+            <p>Get E-mail updates about our latest shop and special offers.</p>
+            <form action="#">
+                <input type="text" placeholder="Enter your mail">
+                <button type="submit" class="site-btn">Subscribe</button>
+            </form>
+            <div class="footer__widget__social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
             </div>
         </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="footer__copyright">
+                <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
+                <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    </div>
     </footer>
     <!-- Footer Section End -->
 
