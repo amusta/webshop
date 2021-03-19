@@ -27,6 +27,8 @@ if(!empty($_REQUEST['term'])){
 }
 
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -262,6 +264,14 @@ if(!empty($_REQUEST['term'])){
 </section>
 <!-- Breadcrumb Section End -->
 
+<?php
+
+while($row = $result->fetch_assoc()) {
+
+
+
+    ?>
+
 <!-- Product Details Section Begin -->
 <section class="product-details spad">
     <div class="container">
@@ -269,9 +279,7 @@ if(!empty($_REQUEST['term'])){
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
-                        <?php
 
-                        while($row = $result->fetch_assoc()) { ?>
                         <img class="product__details__pic__item--large"
 
                             <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
@@ -284,12 +292,62 @@ if(!empty($_REQUEST['term'])){
                 <div class="product__details__text">
                     <h3><?php echo $row['name'];?></h3>
                     <div class="product__details__rating">
+                        <?php
+                        $R=rating();
+                        if($R<0.5){ ?>
+                            <i class="fa fa-star-half-o"></i>
+                        <?php  ?>
+                        <?php } elseif ($R<1) { ?>
+                        <i class="fa fa-star"></i>
+
+                        <?php } elseif ($R<1.5) { ?>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+
+                        <?php }elseif ($R<2) { ?>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+
+                        <?php } elseif ($R<2.5) { ?>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+
+                        <?php } elseif ($R<3) { ?>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+
+                        <?php } elseif ($R<3.5) { ?>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+
+                        <?php } elseif ($R<4) { ?>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+
+                        <?php } elseif ($R<4.5) { ?>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star-half-o"></i>
-                        <span>(18 reviews)</span>
+
+                        <?php } elseif ($R<=5) { ?>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+
+                        <?php } else { ?>
+                       NOT RATED YET
+                        <?php } ?>
+
                     </div>
                     <div class="product__details__price">  <?php  echo $row['price']; ?> $ </div>
                     <p> <?php  echo $row['description']; ?> </p>
@@ -304,6 +362,7 @@ if(!empty($_REQUEST['term'])){
 
 
                      <?php  echo "<a href='dog_food_description.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."'  class=\"primary-btn\" name=\"add\">ADD TO CARD "  ; ?>
+                       <?php  echo "<a href='review.php?ID=" . $row["id_product"] . "' class=\"primary-btn\" > Review " ;  ?>
 
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                     <?php } else { ?>
@@ -355,13 +414,7 @@ if(!empty($_REQUEST['term'])){
                         </div>
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
-
-
-                                <?php  echo "<a href='review.php?ID=". $row["id_product"] ."' class=\"site-btn\" > Review " ; ?>
-
-
-
-
+                                <p><?php echo comment() ?></p>
 
 
                             </div>
@@ -369,24 +422,24 @@ if(!empty($_REQUEST['term'])){
                     </div>
                 </div>
             </div>
-            <?php } ?>
-
-            <?php
-
-            if (isset($_GET['id_product'])) {
-                if( isset($_GET['id_user'])) {
-
-                    add_to_cart($_GET['id_product'], $_GET['id_user']);
-                }}
-
-
-
-            ?>
-
         </div>
     </div>
 </section>
 <!-- Product Details Section End -->
+
+<?php } ?>
+
+<?php
+
+if (isset($_GET['id_product'])) {
+if( isset($_GET['id_user'])) {
+
+add_to_cart($_GET['id_product'], $_GET['id_user']);
+}}
+
+
+
+?>
 
 
 

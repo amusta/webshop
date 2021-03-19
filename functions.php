@@ -30,6 +30,8 @@ include ('connection.php');
     $comments = "";
     $rating = null;
 
+    $quantity= 1;
+
 
 
 
@@ -52,8 +54,19 @@ include ('connection.php');
     }
 
 
+function rating()
+{
+    global $conn;
+    if (isset($_GET['ID'])) {
+        $sql = mysqli_query($conn, "SELECT AVG(rating) as AVGRATE FROM review WHERE  id_product='" . $_GET['ID'] . "'");
+    }
 
+    $row = mysqli_fetch_array($sql);
 
+    $AVGRATE=$row['AVGRATE'];
+    echo $AVG= round($AVGRATE,1);
+    return  $AVG;
+}
 
 	// REGISTER USER
 	function register(){
@@ -297,9 +310,7 @@ function add_comment( $id_user, $id_product) {
         array_push($errors, "Add your comment");
     }
     $rating =  e($_POST['rating']);
-    if (empty($rating)) {
-        array_push($errors, "Add rating");
-    }
+
     $sql = "INSERT INTO review (ID_users, id_product, comments, rating) VALUES ($id_user, $id_product, '$comments', '$rating')" ;
     mysqli_query($conn, $sql);
 
@@ -313,6 +324,36 @@ function add_comment( $id_user, $id_product) {
 
 
 }
+function comment()
+{
+    global $conn;
+    if (isset($_GET['ID'])) {
+        $sql =  "SELECT comments FROM review WHERE  id_product='" . $_GET['ID'] . "'";
+
+    }
+    $result = mysqli_query($conn,$sql);
+    while($row = $result->fetch_assoc()) {
+    echo $row['comments'];
+    echo "\r";
+
+    }
+
+
+
+}
+	function slider(){
+	    global $conn;
+
+        $sql ="SELECT products.img, review.rating
+FROM review
+INNER JOIN products  ON products.id_product =review.id_product
+ ORDER BY rating ASC";
+       // $sql = "SELECT * FROM products ";
+        $result=mysqli_query($conn, $sql);
+        while($row=$result->fetch_assoc()) {
+            echo '<img src="../img/' . $row['img'] . '. "  class="categories__item set-bg""  >';
+        }
+    }
 
 	function remove_from_cart($id_product, $id_user){
 	    global $conn;
@@ -326,10 +367,11 @@ function add_comment( $id_user, $id_product) {
 
     }
 
-	function update_cart($quantity){
+	function update_cart($id_user, $id_product, $quantity){
 	    global $conn;
 
-	    $sql ="INSERT INTO cart (quantity) VALUES ($quantity) ";
+
+	    $sql ="UPDATE cart SET quantity=$quantity WHERE ID_users=$id_user AND id_product=$id_product ";
         if (mysqli_query($conn, $sql)){
             echo "<br/><br/><span>Updated successfully...!!</span>";
         } else {

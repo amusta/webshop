@@ -6,10 +6,10 @@ include ('connection.php');
 
 
 if(isset($_GET['ID'])) {
-    $sql = "SELECT * FROM products WHERE id_product='" . $_GET['ID'] . "'";
+    $sql = "SELECT * FROM user WHERE ID_user='" . $_GET['ID'] . "'";
 }
 else {
-    $sql = "SELECT * FROM products ";
+    $sql = "SELECT * FROM user ";
 }
 $result = $conn->query($sql);
 
@@ -25,6 +25,8 @@ if(!empty($_REQUEST['term'])){
 
 
 }
+
+
 
 
 ?>
@@ -262,102 +264,125 @@ if(!empty($_REQUEST['term'])){
 </section>
 <!-- Breadcrumb Section End -->
 
-<!-- Product Details Section Begin -->
-<section class="product-details spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="product__details__pic">
-                    <div class="product__details__pic__item">
-                        <?php
+<?php
 
-                        while($row = $result->fetch_assoc()) { ?>
-                        <img class="product__details__pic__item--large"
-
-                        <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6">
-                <div class="product__details__text">
-                    <h3><?php echo $row['name'];?></h3>
-
-                    <div class="product__details__price">  <?php  echo $row['price']; ?> $ </div>
-                    <p> <?php  echo $row['description']; ?> </p>
+while($row = $result->fetch_assoc()) {
 
 
 
+    ?>
 
-                    <?php if (isLoggedIn()){ ?>
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__item">
 
-                        <div class="row">
-                            <form method="post" action="review.php">
-                                <div>
-                                    <select name="rating">
-                                    <?php
-                                    for ($rating=1; $rating<=5; $rating++)
-                                    {
-                                        ?>
-                                        <option value="<?php echo $rating;?>"><?php echo $rating;?></option>
-                                        <?php
-                                    }
-                                    ?>
-                                    </select>
-                                </div>
+                            <img class="product__details__pic__item--large"
 
-                            <input type="text"  name="comments"  placeholder="Type your comment" value ="<?php echo $comments; ?>">
-
-
-
-                                <button type="submit" class="site-btn" name="comments_btn">Review</button>
-                            </form>
+                            <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
                         </div>
-                        <?php
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="product__details__text">
+                        <h3><?php echo $row['User_name'];?></h3>
+
+                        <div class="product__details__price">  <?php  echo $row['price']; ?> $ </div>
+                        <p> <?php  echo $row['description']; ?> </p>
+                        <?php if (isLoggedIn()){ ?>
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" value="1">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <?php  echo "<a href='dog_food_description.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."'  class=\"primary-btn\" name=\"add\">ADD TO CARD "  ; ?>
+                            <?php  echo "<a href='review.php?ID=" . $row["id_product"] . "' class=\"primary-btn\" > Review " ;  ?>
+
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <?php } else { ?>
+                            <span>You need to be logged in to buy.</span>
+                        <?php } ?>
 
 
 
-                       echo $row["id_product"];
 
-                                if (isset($_POST['comments_btn'])) {
+                        <ul>
+                            <li><b>Availability</b> <span>In Stock</span></li>
+                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
+                            <li><b>Weight</b> <span><?php  echo $row['weight']; ?> Kg</span></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                   aria-selected="true">Description</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                                   aria-selected="false">Ingridients</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
+                                   aria-selected="false">Reviews <span>(1)</span></a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__tab__desc">
+
+                                    <p><?php  echo $row['product_description']; ?></p>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__tab__desc">
+
+                                    <p><?php  echo $row['ingridients']; ?></p>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                <div class="product__details__tab__desc">
+                                    <p><?php echo comment() ?></p>
 
 
-
-
-                                    add_comment( $_SESSION ["user"]['ID_users'], $row["id_product"]);
-                                    break;
-
-
-
-                        }
-                        ?>
-
-
-                    <?php   } else { ?>
-                        <span>You need to be logged in to review.</span>
-                    <?php } ?>
-
-
-                    <?php
-
-
-
-
-
-                    ?>
-
-                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
-
-
         </div>
-    </div>
-</section>
-<!-- Product Details Section End -->
+    </section>
+    <!-- Product Details Section End -->
+
+<?php } ?>
+
+<?php
+
+if (isset($_GET['id_product'])) {
+    if( isset($_GET['id_user'])) {
+
+        add_to_cart($_GET['id_product'], $_GET['id_user']);
+    }}
+
+
+
+?>
 
 
 

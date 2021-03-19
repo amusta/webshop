@@ -4,7 +4,7 @@ include('functions.php');
 
 
 
-$sql ="SELECT products.id_product,  products.img, products.name, products.weight, products.price
+$sql ="SELECT products.id_product,  products.img, products.name, products.weight, products.price, products.quantity
 FROM cart 
 INNER JOIN products  ON products.id_product =cart.id_product
 INNER JOIN users ON users.ID_users=cart. ID_users";
@@ -264,6 +264,7 @@ if(!empty($_REQUEST['term'])){
     <!-- Breadcrumb Section End -->
 
     <!-- Shoping Cart Section Begin -->
+
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
@@ -275,12 +276,11 @@ if(!empty($_REQUEST['term'])){
                                     <th class="shoping__product">Products</th>
                                     <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
+                                    <th>DELETE</th>
                                 </tr>
                             </thead>
                             <tbody>
-                           <?php
+                            <?php
 
                             while($row = $result->fetch_assoc()) { ?>
 
@@ -292,60 +292,74 @@ if(!empty($_REQUEST['term'])){
                                         <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
                                         <h5><?php echo $row['name']; ?></h5>
                                     </td>
+
                                     <td class="shoping__cart__price">
                                        <?php echo $row['price'];  ?> $
                                     </td>
+
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
-                                            <div class="pro-qty">
 
 
-                                                <input type="text" value="1">
-                                            </div>
+
+                                                <form action="shoping-cart.php">
+                                                    <label for="quantity">Quantity (between 1 and <?php echo $row['quantity'];  ?>):</label>
+                                                    <input type="number" name="nova_kolicina" id="nova_kolicina" min="1" max="<?php $row['quantity'];  ?> " placeholder="1">
+                                                    <input type="submit"  name="quantity" value="Promjeni">
+                                                </form>
+
+
+                                            <?php if ( isset( $_GET['quantity'] ))
+                                             {
+                                                        if($_GET['nova_kolicina']<=$row['quantity']) {
+                                                            update_cart($_SESSION ["user"]['ID_users'], $row["id_product"], $_GET['nova_kolicina']);
+                                                        }
+                                                        else {echo "Try again loser";}
+                                             }
+                                             ?>
+
                                         </div>
                                     </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
+
+
+                                    <td>
+
+                                        <form action="shoping-cart.php">
+                                            <input type="submit"  name="brisi" value="Obrisi">
+                                        </form>
+
+                                        <?php if ( isset( $_GET['brisi'] ))
+                                        {
+                                            remove_from_cart($row["id_product"], $_SESSION ["user"]['ID_users']);
+
+                                        }
+                                        ?>
+
                                     </td>
 
-                                    <td class="shoping__cart__item__close">
-                                        <?php  echo "<a href='shoping-cart.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."'  class=\"icon_close\" > "  ; ?>
-
-                                    </td>
                                 </tr>
+                            <?php  } ?>
 
 
                             </tbody>
-                            <?php  } ?>
+
                         </table>
                     </div>
-                    <?php
 
-
-                    if (isset($_GET['id_product'])) {
-                        if( isset($_GET['id_user'])) {
-
-                            remove_from_cart($_GET['id_product'], $_GET['id_user']);
-                        }}
-
-                    ?>
                 </div>
             </div>
+
+
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="shop-grid.php" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <?php  echo "<a href='shoping-cart.php?quantity=". $row["quantity"] ."'  class=\"primary-btn cart-btn cart-btn-right\" name=\"add\">Update cart "  ; ?>
-                        <a href="" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                        <?php  echo "<a href='shoping-cart.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."' > "  ; ?>
+                        <button type="submit" class="site-btn" name="update">Update cart</button>
+
                     </div>
-                    <?php
-                        if(isset($_GET['quantity'])){
-                            update_cart($_GET['quantity']);
-                        }
 
-
-                    ?>
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__continue">
@@ -365,6 +379,7 @@ if(!empty($_REQUEST['term'])){
             </div>
         </div>
     </section>
+
     <!-- Shoping Cart Section End -->
 
     <!-- Footer Section Begin -->

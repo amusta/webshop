@@ -280,8 +280,7 @@ include ('connection.php');
                             <th>Name</th>
                             <th>Weight</th>
                             <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
+
                             <th></th>
                         </tr>
                         </thead>
@@ -314,20 +313,9 @@ include ('connection.php');
                                 <?php echo $row['price'];  ?>$
                             </td>
 
-                            <td class="shoping__cart__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="0">
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="shoping__cart__total">
-                                $110.00
-                            </td>
-                            <td >
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
 
-                            </td>
+
+
                         </tr>
                         </tbody>
                             <?php }
