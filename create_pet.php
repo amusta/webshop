@@ -239,54 +239,45 @@
 <div class="container">
     <div class="rowfloat">
         <div class="col-sm" >
-            <h2>Sign up</h2>
-            <form method="post" action="register.php">
-
-                <?php echo display_error(); ?>
+            <h2>Update profile</h2>
+            <form method="post" action="create_pet.php">
 
 
                 <div class="row">
-                    <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>">
+                    <input type="text" name="pet_name" placeholder="Pet name" value="<?php echo $pet_name; ?>">
                 </div>
                 <div class="row">
-                    <input type="email" name="email" placeholder="Email" value="<?php echo $email; ?>">
-                </div>
-
-                <div class="row">
-                    <input type="password" placeholder="Password" name="password_1">
-
-                </div>
-
-                <div class="row" style="margin-bottom: 15px;">
-                    <input type="password" name="password_2" placeholder="Confirm password">
+                    <input type="text" name="species" placeholder="Species" value="<?php echo $species; ?>">
                 </div>
                 <div class="row">
-                    <input type="text" name="Name" placeholder="Fist name" value="<?php echo $Name; ?>">
+                    <input type="text" name="food" placeholder="What kind of food he/she eat" value="<?php echo $food; ?>">
                 </div>
                 <div class="row">
-                    <input type="text" name="Last_name" placeholder="Last name" value="<?php echo $Last_name; ?>">
-                </div>
-                <div class="row">
-                    <input type="text" name="Adress" placeholder="Adress" value="<?php echo $Adress; ?>">
-                </div>
-                <div class="row">
-                    <input type="text" name="City" placeholder="City" value="<?php echo $City; ?>">
-                </div>
-
-                <div class="row">
-                    <input type="number" name="Phone" placeholder="Phone number" value="<?php echo $Phone ?>">
-
-                </div>
-
-                <div class="row" style="margin-bottom:20px ;">
-                    <button type="submit" class="site-btn" name="register_btn">Sign up</button>
+                    <input type="text" name="pet_img" placeholder="Img" >
                 </div>
 
 
+                <div class="row" ">
+                <button type="submit" class="site-btn" name="update_pet" > Create pet profile</button>
+
+                 </div>
+
+        </form>
+
+                <?php
+                echo $_SESSION['user']['ID_users'];
 
 
-                Already a member? <a href="login.php" style="color: gray">Sign in</a>
-            </form>
+                    if( isset($_POST['update_pet'])) {
+
+                       add_pet($_SESSION['user']['ID_users']);
+                    }
+
+
+
+                ?>
+
+
 
 
         </div>

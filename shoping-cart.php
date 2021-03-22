@@ -5,9 +5,9 @@ include('functions.php');
 
 
 $sql ="SELECT products.id_product,  products.img, products.name, products.weight, products.price, products.quantity
-FROM cart 
+FROM cart
 INNER JOIN products  ON products.id_product =cart.id_product
-INNER JOIN users ON users.ID_users=cart. ID_users";
+INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users='" . $_SESSION ["user"]['ID_users'] . "'";
 $result = $conn->query($sql);
 
 
@@ -94,7 +94,7 @@ if(!empty($_REQUEST['term'])){
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-details.html">Shop Details</a></li>
                         <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
+                        <li><a href="checkout.php">Check Out</a></li>
                     </ul>
                 </li>
 
@@ -173,7 +173,7 @@ if(!empty($_REQUEST['term'])){
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-details.html">Shop Details</a></li>
                                     <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="checkout.php">Check Out</a></li>
                                 </ul>
                             </li>
                             <li><a href="./contact.html">Contact</a></li>
@@ -205,7 +205,7 @@ if(!empty($_REQUEST['term'])){
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>All pets</span>
                         </div>
                         <ul>
                             <li><a href="dog.php">Dog</a></li>
@@ -264,7 +264,7 @@ if(!empty($_REQUEST['term'])){
     <!-- Breadcrumb Section End -->
 
     <!-- Shoping Cart Section Begin -->
-
+    <?php if (isLoggedIn()){ ?>
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
@@ -302,21 +302,31 @@ if(!empty($_REQUEST['term'])){
 
 
 
-                                                <form action="shoping-cart.php">
+                                                <form method="get" action="">
                                                     <label for="quantity">Quantity (between 1 and <?php echo $row['quantity'];  ?>):</label>
-                                                    <input type="number" name="nova_kolicina" id="nova_kolicina" min="1" max="<?php $row['quantity'];  ?> " placeholder="1">
-                                                    <input type="submit"  name="quantity" value="Promjeni">
+                                                    <input type="hidden" name="ID_users" value="<?php  echo $_SESSION["user"]['ID_users']; ?>">
+                                                    <input type="hidden" name="id_product" value="<?php  echo $row['id_product']; ?>" />
+                                                    <input type="number" name="quantity"  min="1" max="<?php $row['quantity'];  ?> " placeholder="1" value="<?php echo $quantity; ?>">
+                                                    <button type="submit" class="site-btn" name="Promjeni">Update</button>
                                                 </form>
 
+                                            <?php
 
-                                            <?php if ( isset( $_GET['quantity'] ))
-                                             {
-                                                        if($_GET['nova_kolicina']<=$row['quantity']) {
-                                                            update_cart($_SESSION ["user"]['ID_users'], $row["id_product"], $_GET['nova_kolicina']);
+                                            if ( isset( $_GET['Promjeni'] )) {
+                                                if (isset($_GET["id_product"])) {
+                                                    if (isset($_SESSION ["user"]['ID_users'])) {
+                                                        if ($_GET['quantity'] <= $row['quantity']) {
+                                                            update_cart($_SESSION ["user"]['ID_users'], $row["id_product"], $_GET['quantity']);
+
+
+                                                        } else {
+                                                            echo "Try again";
                                                         }
-                                                        else {echo "Try again loser";}
-                                             }
-                                             ?>
+                                                    }
+                                                }
+                                            }
+                                            ?>
+
 
                                         </div>
                                     </td>
@@ -324,14 +334,18 @@ if(!empty($_REQUEST['term'])){
 
                                     <td>
 
-                                        <form action="shoping-cart.php">
-                                            <input type="submit"  name="brisi" value="Obrisi">
-                                        </form>
+                                        <?php  echo "<a href='shoping-cart.php?ID=" .$_SESSION ["user"]['ID_users'] . "&id_product=" . $row["id_product"] . "'  type=\"button\" >X "  ; ?>
 
-                                        <?php if ( isset( $_GET['brisi'] ))
-                                        {
-                                            remove_from_cart($row["id_product"], $_SESSION ["user"]['ID_users']);
 
+
+
+                                        <?php if ( isset( $_GET['ID'] )) {
+
+
+                                            if (isset($_GET["id_product"])) {
+                                                remove_from_cart($_GET['ID'], $_GET["id_product"]);
+
+                                            }
                                         }
                                         ?>
 
@@ -352,34 +366,18 @@ if(!empty($_REQUEST['term'])){
 
 
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="shoping__cart__btns">
-                        <a href="shop-grid.php" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <?php  echo "<a href='shoping-cart.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."' > "  ; ?>
-                        <button type="submit" class="site-btn" name="update">Update cart</button>
 
-                    </div>
 
-                </div>
-                <div class="col-lg-6">
-                    <div class="shoping__continue">
-
-                    </div>
-                </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
-                        <ul>
 
-                            <li>Total <span>$454.98</span></li>
-                        </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="checkout.php" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+<?php } else { echo "You need to login to see cart" ;} ?>
     <!-- Shoping Cart Section End -->
 
     <!-- Footer Section Begin -->

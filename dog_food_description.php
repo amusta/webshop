@@ -101,7 +101,7 @@ if(!empty($_REQUEST['term'])){
                 <ul class="header__menu__dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
                     <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
+                    <li><a href="checkout.php">Check Out</a></li>
                 </ul>
             </li>
             <li><a href="./contact.html">Contact</a></li>
@@ -174,7 +174,7 @@ if(!empty($_REQUEST['term'])){
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
                                 <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
+                                <li><a href="checkout.php">Check Out</a></li>
                             </ul>
                         </li>
                         <li><a href="./contact.html">Contact</a></li>
@@ -361,7 +361,8 @@ while($row = $result->fetch_assoc()) {
                     </div>
 
 
-                     <?php  echo "<a href='dog_food_description.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."'  class=\"primary-btn\" name=\"add\">ADD TO CARD "  ; ?>
+
+                     <?php  echo "<a href='dog_food_description.php?ID=" . $row["id_product"] . "&id_user=" . $_SESSION ["user"]['ID_users'] . "'  class=\"primary-btn\" name=\"add\">ADD TO CART "  ; ?>
                        <?php  echo "<a href='review.php?ID=" . $row["id_product"] . "' class=\"primary-btn\" > Review " ;  ?>
 
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
@@ -425,21 +426,24 @@ while($row = $result->fetch_assoc()) {
         </div>
     </div>
 </section>
-<!-- Product Details Section End -->
 
+<!-- Product Details Section End -->
+    <?php
+
+    if (isset($row["id_product"])) {
+        if( isset($_GET['id_user'])) {
+
+            add_to_cart($_SESSION ["user"]['ID_users'], $row["id_product"]  );
+        }
+    }
+    break;
+
+
+
+    ?>
 <?php } ?>
 
-<?php
 
-if (isset($_GET['id_product'])) {
-if( isset($_GET['id_user'])) {
-
-add_to_cart($_GET['id_product'], $_GET['id_user']);
-}}
-
-
-
-?>
 
 
 

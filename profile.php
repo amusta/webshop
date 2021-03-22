@@ -5,11 +5,11 @@ include ('connection.php');
 
 
 
-if(isset($_GET['ID'])) {
-    $sql = "SELECT * FROM user WHERE ID_user='" . $_GET['ID'] . "'";
+if(isset($_SESSION['user'])) {
+    $sql = "SELECT * FROM users WHERE ID_users='" .$_SESSION['user']['ID_users'] . "'";
 }
 else {
-    $sql = "SELECT * FROM user ";
+    $sql = "SELECT * FROM users ";
 }
 $result = $conn->query($sql);
 
@@ -101,7 +101,7 @@ if(!empty($_REQUEST['term'])){
                 <ul class="header__menu__dropdown">
                     <li><a href="./shop-details.html">Shop Details</a></li>
                     <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
+                    <li><a href="checkout.php">Check Out</a></li>
                 </ul>
             </li>
             <li><a href="./contact.html">Contact</a></li>
@@ -174,7 +174,7 @@ if(!empty($_REQUEST['term'])){
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
                                 <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                                <li><a href="./checkout.html">Check Out</a></li>
+                                <li><a href="checkout.php">Check Out</a></li>
                             </ul>
                         </li>
                         <li><a href="./contact.html">Contact</a></li>
@@ -183,11 +183,7 @@ if(!empty($_REQUEST['term'])){
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-                    </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+
                 </div>
             </div>
         </div>
@@ -246,23 +242,7 @@ if(!empty($_REQUEST['term'])){
 </section>
 <!-- Hero Section End -->
 
-<!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/banner/dogfood.png">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="breadcrumb__text">
-                    <h2>Dog food</h2>
-                    <div class="breadcrumb__option">
-                        <a href="index.php">Home</a>
-                        <span>Shopping Cart</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Breadcrumb Section End -->
+
 
 <?php
 
@@ -279,92 +259,36 @@ while($row = $result->fetch_assoc()) {
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
+                            <h3>Welcome back</h3>
+                            <h3>  <?php echo  $row['User_name'];?></h3>
 
-                            <img class="product__details__pic__item--large"
-
-                            <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?>
                         </div>
+                        <a href="shoping-cart.php">If you like to visit your cart click here!</a>
+
 
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3><?php echo $row['User_name'];?></h3>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product__details__text">
+                            <div style="margin-bottom: 10px">
 
-                        <div class="product__details__price">  <?php  echo $row['price']; ?> $ </div>
-                        <p> <?php  echo $row['description']; ?> </p>
-                        <?php if (isLoggedIn()){ ?>
-                            <div class="product__details__quantity">
-                                <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
-                                </div>
                             </div>
-
-
-                            <?php  echo "<a href='dog_food_description.php?id_product=". $row["id_product"] ."&id_user=". $_SESSION ["user"]['ID_users'] ."'  class=\"primary-btn\" name=\"add\">ADD TO CARD "  ; ?>
-                            <?php  echo "<a href='review.php?ID=" . $row["id_product"] . "' class=\"primary-btn\" > Review " ;  ?>
-
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                        <?php } else { ?>
-                            <span>You need to be logged in to buy.</span>
-                        <?php } ?>
+                            <form action="create_pet.php">
+                                <input type="submit" value=" Create your pet profile" />
+                            </form>
 
 
 
 
-                        <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span><?php  echo $row['weight']; ?> Kg</span></li>
-
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-12">
-                    <div class="product__details__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                   aria-selected="true">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                   aria-selected="false">Ingridients</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                   aria-selected="false">Reviews <span>(1)</span></a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">
-
-                                    <p><?php  echo $row['product_description']; ?></p>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">
-
-                                    <p><?php  echo $row['ingridients']; ?></p>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <p><?php echo comment() ?></p>
-
-
-                                </div>
-                            </div>
                         </div>
                     </div>
+
                 </div>
+
+
+                <?php echo pet_profile() ?>
+
             </div>
         </div>
     </section>
@@ -372,17 +296,7 @@ while($row = $result->fetch_assoc()) {
 
 <?php } ?>
 
-<?php
 
-if (isset($_GET['id_product'])) {
-    if( isset($_GET['id_user'])) {
-
-        add_to_cart($_GET['id_product'], $_GET['id_user']);
-    }}
-
-
-
-?>
 
 
 

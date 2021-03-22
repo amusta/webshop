@@ -84,7 +84,7 @@
                 <ul class="header__menu__dropdown">
                     <li><a href="../shop-details.html">Shop Details</a></li>
                     <li><a href="../shoping-cart.php">Shoping Cart</a></li>
-                    <li><a href="../checkout.html">Check Out</a></li>
+                    <li><a href="../checkout.php">Check Out</a></li>
 
                 </ul>
             </li>
@@ -165,7 +165,7 @@
                             <ul class="header__menu__dropdown">
                                 <li><a href="../shop-details.html">Shop Details</a></li>
                                 <li><a href="../shoping-cart.php">Shoping Cart</a></li>
-                                <li><a href="../checkout.html">Check Out</a></li>
+                                <li><a href="../checkout.php">Check Out</a></li>
 
                             </ul>
                         </li>
