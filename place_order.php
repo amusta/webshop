@@ -300,7 +300,7 @@ if(!empty($_REQUEST['term'])){
                             <tr>
 
                                 <td class="shoping__cart__item">
-
+                                   <?php  $row['id_product']; ?>
 
                                     <h5><?php echo $row['name']; ?></h5>
                                 </td>
@@ -314,7 +314,6 @@ if(!empty($_REQUEST['term'])){
                                 </td>
 
                             </tr>
-
 
 
 
@@ -335,17 +334,21 @@ if(!empty($_REQUEST['term'])){
 
 
 
-                       <?php  echo "<a href='place_order.php?ID=" .$_SESSION ["user"]['ID_users'] . "'>"  ; ?>
+                    <?php  echo "<a href='place_order.php?ID=" .$_SESSION ["user"]['ID_users'] .  "'>"  ; ?>
                     <button type="submit" name="delete_cart" class="site-btn">PLACE ORDER</button>
-                        <?php
-                        if (isset($_GET['ID'])){
-                                            delete_cart_for_user($_GET['ID']);
-                        }
-                        ?>
+                    <?php
+                    if (isset($_GET['ID'])) {
+
+                            delete_cart_for_user($_GET['ID']);
+
+                    }
+                    ?>
 
 
 
                 </div>
+            </div>
+
             </div>
         </div>
         </form>

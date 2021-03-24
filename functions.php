@@ -515,23 +515,28 @@ INNER JOIN products  ON products.id_product =review.id_product
 
 
     }
-function delete_cart_for_user($id_user){
+function delete_cart_for_user($id_user ){
 	    global $conn;
 
 
-    $query ="SELECT products.id_product, product.quantity, cart.quantity
-FROM cart
-INNER JOIN products  ON products.id_product =cart.id_product
-INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users=$id_user";
-    $test = $conn->query($query);
-    $sum= 0;
-    while($num = $test->fetch_assoc()) {
-        $sum =$num['product']['quantity']-$num['quantity'];
-    }
-    $sql3 ="UPDATE products SET quantity=$sum ";
-    mysqli_query($conn,$sql3);
+    $sql1 ="SELECT products.id_product, cart.quantity
+            FROM cart
+            INNER JOIN products  ON products.id_product =cart.id_product
+            INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users=$id_user";
+    $result = $conn->query($sql1);
 
-	    $sql="DELETE FROM cart WHERE ID_users=$id_user";
+    while($row=$result->fetch_assoc()){
+        $new_quantity=$row['quantity'];
+        $id_product=$row['id_product'];
+$sql3 ="UPDATE products SET quantity=quantity-$new_quantity WHERE id_product=$id_product";
+            mysqli_query($conn,$sql3);
+    }
+
+
+
+
+
+	 $sql="DELETE FROM cart WHERE ID_users=$id_user";
     if (mysqli_query($conn, $sql)){
         echo " <h2>Your order has been received.</h2>
                     <h2>Thank you for buying from us. </h2>";
@@ -540,20 +545,6 @@ INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users=$id_user";
     }
 
 
-}
-function update_quantity($id_product, $quantity){
-    global $conn;
-
-
-
-
-    $sql ="UPDATE products SET quantity=(quantity-'$quantity') WHERE  id_product=$id_product ";
-
-    if (mysqli_query($conn, $sql)){
-        echo "<br/><br/><span>Updated successfully...!!</span>";
-    } else {
-        echo "Error: CAN'T UPDATE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
-    }
 
 }
 function remove_pet(  $id_pet){
