@@ -21,30 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="3a974dd1-6c36-49dc-99a3-c0d3f60b4d6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-home.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin-home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/add_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/add_product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/create_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/create_user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/remove_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/remove_user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bird.php" beforeDir="false" afterPath="$PROJECT_DIR$/bird.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cat.php" beforeDir="false" afterPath="$PROJECT_DIR$/cat.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biljške prilikom pravljanja web stranice.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/checkout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dog.php" beforeDir="false" afterPath="$PROJECT_DIR$/dog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dog_food_description.php" beforeDir="false" afterPath="$PROJECT_DIR$/dog_food_description.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fish.php" beforeDir="false" afterPath="$PROJECT_DIR$/fish.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/food_cat.php" beforeDir="false" afterPath="$PROJECT_DIR$/food_cat.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/food_dog.php" beforeDir="false" afterPath="$PROJECT_DIR$/food_dog.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reptile.php" beforeDir="false" afterPath="$PROJECT_DIR$/reptile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/review.php" beforeDir="false" afterPath="$PROJECT_DIR$/review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop-details.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/shop-grid.php" beforeDir="false" afterPath="$PROJECT_DIR$/shop-grid.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoping-cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/shoping-cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/small_animals.php" beforeDir="false" afterPath="$PROJECT_DIR$/small_animals.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +158,8 @@
       <workItem from="1616345826548" duration="4754000" />
       <workItem from="1616429406496" duration="154000" />
       <workItem from="1616429766573" duration="8557000" />
-      <workItem from="1616439530189" duration="2304000" />
+      <workItem from="1616439530189" duration="2671000" />
+      <workItem from="1616576330061" duration="19694000" />
     </task>
     <servers />
   </component>

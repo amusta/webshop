@@ -8,7 +8,7 @@ include ('connection.php');
 
 
 <?php
-        $sql = "SELECT * FROM products WHERE category LIKE 'food' AND animal LIKE 'dog'";
+        $sql = "SELECT * FROM products WHERE category LIKE 'food' AND animal LIKE 'dog' AND quantity >0";
         $result =$conn->query($sql);
 
     if(!empty($_REQUEST['term'])){

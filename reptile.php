@@ -6,7 +6,7 @@ include ('connection.php');
 ?>
 
 
-<?php $sql = "SELECT * FROM products";
+<?php $sql = "SELECT * FROM products ";
 $result = $conn->query($sql);
 ?>
 

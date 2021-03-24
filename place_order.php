@@ -1,13 +1,38 @@
 <?php
-
-include('functions.php');
 include ('connection.php');
+include('functions.php');
 
-?>
 
-
-<?php $sql = "SELECT * FROM products WHERE quantity >0";
+$sql ="SELECT products.id_product,  products.img, products.name, products.price, cart.quantity
+FROM cart
+INNER JOIN products  ON products.id_product =cart.id_product
+INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users='" . $_SESSION ["user"]['ID_users'] . "'";
 $result = $conn->query($sql);
+
+
+$query ="SELECT products.id_product,  products.img, products.name, products.price, cart.quantity
+FROM cart
+INNER JOIN products  ON products.id_product =cart.id_product
+INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users='" . $_SESSION ["user"]['ID_users'] . "'";
+$test = $conn->query($query);
+$sum= 0;
+while ($num = mysqli_fetch_assoc ($test)) {
+    $sum += $num['quantity']*$num['price'];
+}
+
+
+if(!empty($_REQUEST['term'])){
+    $term=$_REQUEST['term'];
+
+    $sql= "SELECT * FROM products WHERE name LIKE '%" . $term . "%' ";
+    $result=$conn->query($sql);
+
+
+
+
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -55,29 +80,22 @@ $result = $conn->query($sql);
         <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
     <div class="humberger__menu__widget">
+        <?php if (isLoggedIn()){ ?>
+            <div class="header__top__right__auth">
+                <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+            </div>
+            <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
 
-        <div class="header__top__right__auth">
+            <?php    if(isset($_SESSION['user'])) { } ?>
+        <?php } else { ?>
 
-            <?php if (isLoggedIn()){ ?>
-                <div class="header__top__right__auth">
+            <a href="login.php"><i class="fa fa-user"></i> Login</a>
 
-                    <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
-                </div>
-                <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
+        <?php } ?>
 
-                <?php    if(isset($_SESSION['user'])) { } ?>
-            <?php } else { ?>
-
-                <a href="login.php"><i class="fa fa-user"></i> Login</a>
-
-            <?php } ?>
-
-
-            <?php if (isAdmin()){ ?>
-                <a href="login/admin/home.php" class="button">AdminView</a>
-            <?php } ?>
-
-        </div>
+        <?php if (isAdmin()){ ?>
+            <a href="login/admin/home.php" class="button">AdminView</a>
+        <?php } ?>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
@@ -88,9 +106,9 @@ $result = $conn->query($sql);
                     <li><a href="./shop-details.html">Shop Details</a></li>
                     <li><a href="shoping-cart.php">Shoping Cart</a></li>
                     <li><a href="checkout.php">Check Out</a></li>
-
                 </ul>
             </li>
+
             <li><a href="./contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -118,39 +136,37 @@ $result = $conn->query($sql);
                 <div class="col-lg-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i> autosender101@gmail.com</li>
+                            <li><i class="fa fa-envelope"></i>autosender101@gmail.com</li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="header__top__right">
+                        <?php if (isLoggedIn()){ ?>
 
-                        <div class="header__top__right__auth">
+                            <div class="header__top__right__auth">
 
-                            <?php if (isLoggedIn()){ ?>
-                                <div class="header__top__right__auth">
+                                <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+                            </div>
+                            <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
 
-                                    <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
-                                </div>
-                                <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
+                            <?php    if(isset($_SESSION['user'])) { } ?>
+                        <?php } else { ?>
 
-                                <?php    if(isset($_SESSION['user'])) { } ?>
-                            <?php } else { ?>
+                            <a href="login.php"><i class="fa fa-user"></i> Login</a>
 
-                                <a href="login.php"><i class="fa fa-user"></i> Login</a>
-
-                            <?php } ?>
+                        <?php } ?>
 
 
-                            <?php if (isAdmin()){ ?>
-                                <a href="login/admin/home.php" class="button">AdminView</a>
-                            <?php } ?>
-                        </div>
+                        <?php if (isAdmin()){ ?>
+                            <a href="login/admin/home.php" class="button">AdminView</a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="container">
         <div class="row">
@@ -177,8 +193,11 @@ $result = $conn->query($sql);
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
-
-
+                    <ul>
+                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                    </ul>
+                    <div class="header__cart__price">item: <span>$150.00</span></div>
                 </div>
             </div>
         </div>
@@ -217,7 +236,7 @@ $result = $conn->query($sql);
                                 All Categories
                                 <span class="arrow_carrot-down"></span>
                             </div>
-                            <input type="text" placeholder="What do yo u need?" >
+                            <input type="text" placeholder="What do yo u need?" name="term">
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
@@ -238,15 +257,15 @@ $result = $conn->query($sql);
 <!-- Hero Section End -->
 
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/dogs.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Shop</h2>
+                    <h2>Checkout</h2>
                     <div class="breadcrumb__option">
                         <a href="index.php">Home</a>
-                        <span>Shop</span>
+                        <span>Checkout</span>
                     </div>
                 </div>
             </div>
@@ -255,158 +274,85 @@ $result = $conn->query($sql);
 </section>
 <!-- Breadcrumb Section End -->
 
-<!-- Product Section Begin -->
-<section class="product spad">
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-5">
-                <div class="sidebar">
-                    <div class="sidebar__item">
-                        <h4>All pets</h4>
-                        <ul>
-                            <li><a href="dog.php">Dog</a></li>
-                            <li><a href="cat.php">Cat</a></li>
-                            <li><a href="bird.php">Bird</a></li>
-                            <li><a href="small_animals.php">Small animals</a></li>
-                            <li><a href="reptile.php">Raptiles</a></li>
-                            <li><a href="fish.php">Fish</a></li>
-                        </ul>
-                    </div>
-                    <div class="sidebar__item">
-                        <h4>Price</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                 data-min="10" data-max="540">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
+            <div class="col-lg-8">
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sidebar__item sidebar__item__color--option">
-                        <h4>All category</h4>
-                        <div class="sidebar__item__color sidebar__item__color--green">
-                            <label for="green">
-                                Food
-                                <input type="radio" id="green">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--gray">
-                            <label for="gray">
-                                Toys
-                                <input type="radio" id="gray">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--red">
-                            <label for="red">
-                                Treats
-                                <input type="radio" id="red">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--black">
-                            <label for="black">
-                                Leads and collars
-                                <input type="radio" id="black">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--blue">
-                            <label for="blue">
-                                Grooming and care
-                                <input type="radio" id="blue">
-                            </label>
-                        </div>
-                        <div class="sidebar__item__color sidebar__item__color--white">
-                            <label for="white">
-                                Beds & baskets & crates
-                                <input type="radio" id="white">
-                            </label>
-                        </div>
-                    </div>
+
+                <div class="checkout__form">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class="shoping__product">Products</th>
+
+                            <th class="shoping__cart__price">Quantity</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+
+                        while($row = $result->fetch_assoc()) { ?>
+
+
+                            <tr>
+
+                                <td class="shoping__cart__item">
+
+
+                                    <h5><?php echo $row['name']; ?></h5>
+                                </td>
+
+
+
+                                <td class="shoping__cart__price">
+
+                                    <?php echo $row['quantity']; ?>
+
+                                </td>
+
+                            </tr>
+
+
+
+
+                        <?php  } ?>
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="checkout__order">
+                    <h4>Your Order</h4>
+
+
+                    <div class="checkout__order__total">Total <span><?php echo $sum; ?></span></div>
+
+
+
+                       <?php  echo "<a href='place_order.php?ID=" .$_SESSION ["user"]['ID_users'] . "'>"  ; ?>
+                    <button type="submit" name="delete_cart" class="site-btn">PLACE ORDER</button>
+                        <?php
+                        if (isset($_GET['ID'])){
+                                            delete_cart_for_user($_GET['ID']);
+                        }
+                        ?>
+
+
 
                 </div>
             </div>
-            <div class="col-lg-9 col-md-7">
-                <div class="product__discount">
-
-                </div>
-
-                <div class="row ">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="checkout__order__food">
-                            <div class="checkout__order__food__h4"><a href="food_dog.php">Food</a></div>
-
-                            <ul>
-                                <li>Hill's</li>
-                                <li>Royal Canin</li>
-                                <li>Eucanuba </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="checkout__order__toys">
-                            <div class="checkout__order__toys__h4"><a href="toys.php">Toys</a></div>
-                            <ul>
-                                <li>KONG</li>
-                                <li>Soft toys</li>
-                                <li>Squeaker toys</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="checkout__order__treats">
-                            <div class="checkout__order__treats__h4"><a href="treats.php">Treats</a></div>
-                            <ul>
-                                <li>Hill's</li>
-                                <li>Bosch</li>
-                                <li>>Trixie</li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-
-            </div>
-                <div class="row top-buffer">
-                    <div class="col-lg-4 col-md-6 col-sm-6 ">
-                        <div class="checkout__order__leads">
-                            <div class="checkout__order__leads__h4"><a href="leads.php">Leads & collars</a></div>
-                            <ul>
-                                <li>flexi</li>
-                                <li>HUNTER</li>
-                                <li>JULIUS-K9</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="checkout__order__groom">
-                            <div class="checkout__order__groom__h4"><a href="grooming.php">Grooming & care</a></div>
-                            <ul>
-                                <li>Shampoo</li>
-                                <li>For shedding</li>
-                                <li>Clippers & scissors</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="checkout__order__bed">
-                            <div class="checkout__order__bed__h4"><a href="bed.php">Beds & crates</a></div>
-                            <ul>
-                                <li>Outdoor beds</li>
-                                <li>Orthopaedic beds</li>
-                                <li>Soft crates</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
         </div>
+        </form>
     </div>
-
-
+    </div>
 </section>
-<!-- Product Section End -->
+<!-- Checkout Section End -->
 
 <!-- Footer Section Begin -->
 <footer class="footer spad">

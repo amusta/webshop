@@ -302,29 +302,26 @@ if(!empty($_REQUEST['term'])){
 
 
 
-                                                <form method="get" action="">
+                                                <form method="get" action="shoping-cart.php">
                                                     <label for="quantity">Quantity (between 1 and <?php echo $row['quantity'];  ?>):</label>
-                                                    <input type="hidden" name="ID_users" value="<?php  echo $_SESSION["user"]['ID_users']; ?>">
                                                     <input type="hidden" name="id_product" value="<?php  echo $row['id_product']; ?>" />
-                                                    <input type="number" name="quantity"  min="1" max="<?php $row['quantity'];  ?> " placeholder="1" value="<?php echo $quantity; ?>">
+                                                    <input type="number" name="quantity"  min="1" max="<?php $row['quantity'];  ?> " placeholder="1" value="<?php $quantity; ?>">
                                                     <button type="submit" class="site-btn" name="Promjeni">Update</button>
                                                 </form>
 
                                             <?php
 
                                             if ( isset( $_GET['Promjeni'] )) {
-                                                if (isset($_GET["id_product"])) {
-                                                    if (isset($_SESSION ["user"]['ID_users'])) {
-                                                        if ($_GET['quantity'] <= $row['quantity']) {
-                                                            update_cart($_SESSION ["user"]['ID_users'], $row["id_product"], $_GET['quantity']);
 
+                                                        if ($_GET['quantity'] <= $row['quantity']) {
+                                                            update_cart($_SESSION ["user"]['ID_users'], $_GET["id_product"], $_GET['quantity']);
 
                                                         } else {
                                                             echo "Try again";
                                                         }
-                                                    }
+
                                                 }
-                                            }
+
                                             ?>
 
 

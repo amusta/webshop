@@ -286,7 +286,8 @@ if(!empty($_REQUEST['term'])){
                     <thead>
                     <tr>
                         <th class="shoping__product">Products</th>
-                        <th>Price</th>
+                        <th class="shoping__cart__price">Price             </th>
+                        <th class="shoping__cart__price">Quantity</th>
 
                     </tr>
                     </thead>
@@ -307,9 +308,10 @@ if(!empty($_REQUEST['term'])){
                             <td class="shoping__cart__price">
                                 <?php echo $row['price'];  ?> $
                             </td>
-                             <td>
 
+                             <td class="shoping__cart__price">
 
+                                <?php echo $row['quantity']; ?>
 
                             </td>
 
@@ -330,8 +332,8 @@ if(!empty($_REQUEST['term'])){
                                 <div class="checkout__order__total">Total <span><?php echo $sum; ?></span></div>
 
 
-
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                        <a href ="place_order.php"
+                                <button type="submit" class="site-btn">PLACE ORDER</button></a>
                             </div>
                         </div>
                     </div>

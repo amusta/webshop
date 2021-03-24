@@ -365,26 +365,38 @@ function comment()
 {
 global $conn;
 
+    $sql12 = "SELECT word FROM dirtywords WHERE languages ='en'";
+    $result2 = mysqli_query($conn, $sql12);
+    $words=array();
+    while($row = $result2->fetch_assoc()) {
+        array_push($words, $row['word'] );
+    }
 
     if (isset($_GET['ID'])) {
         $sql = "SELECT comments FROM review WHERE  id_product='" . $_GET['ID'] . "'";
 
     }
     $result = mysqli_query($conn, $sql);
+    $dirty_word=array();
 
-   while($row = $result->fetch_assoc()) {
+    while($row = $result->fetch_assoc()) {
+        $rijeci = explode(" ", $row['comments']);
+        foreach ($rijeci as $rijec){
+            {
+                array_push($dirty_word, $rijec);
+            }
+    }}
+ foreach ($dirty_word as $dirty_words){
+     foreach ($words as $word){
 
-            $comment= $row['comments'];
+         if ($dirty_words==$word) {
+             $dirty_words = "***";
+         }
 
-    }
-
-
-echo $comment;
-
-
-
-
-
+     }
+     echo $dirty_words;
+     echo " ";
+ }
 
 }
 
@@ -484,7 +496,7 @@ INNER JOIN products  ON products.id_product =review.id_product
     function slider_all_product(){
         global $conn;
 
-        $sql ="SELECT * FROM products";
+        $sql ="SELECT * FROM products WHERE quantity >0";
 
         $result=mysqli_query($conn, $sql);
         while($row=$result->fetch_assoc()) {
@@ -503,6 +515,47 @@ INNER JOIN products  ON products.id_product =review.id_product
 
 
     }
+function delete_cart_for_user($id_user){
+	    global $conn;
+
+
+    $query ="SELECT products.id_product, product.quantity, cart.quantity
+FROM cart
+INNER JOIN products  ON products.id_product =cart.id_product
+INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users=$id_user";
+    $test = $conn->query($query);
+    $sum= 0;
+    while($num = $test->fetch_assoc()) {
+        $sum =$num['product']['quantity']-$num['quantity'];
+    }
+    $sql3 ="UPDATE products SET quantity=$sum ";
+    mysqli_query($conn,$sql3);
+
+	    $sql="DELETE FROM cart WHERE ID_users=$id_user";
+    if (mysqli_query($conn, $sql)){
+        echo " <h2>Your order has been received.</h2>
+                    <h2>Thank you for buying from us. </h2>";
+    } else {
+        echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+    }
+
+
+}
+function update_quantity($id_product, $quantity){
+    global $conn;
+
+
+
+
+    $sql ="UPDATE products SET quantity=(quantity-'$quantity') WHERE  id_product=$id_product ";
+
+    if (mysqli_query($conn, $sql)){
+        echo "<br/><br/><span>Updated successfully...!!</span>";
+    } else {
+        echo "Error: CAN'T UPDATE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+    }
+
+}
 function remove_pet(  $id_pet){
     global $conn;
     $sql= "DELETE FROM pet WHERE  pet_id=$id_pet ";
