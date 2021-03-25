@@ -45,14 +45,13 @@ $result = $conn->query($sql);
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
+        <a href="#"><img src="img/logo1.jpg" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
-            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+
         </ul>
-        <div class="header__cart__price">item: <span>$150.00</span></div>
+
     </div>
     <div class="humberger__menu__widget">
 
@@ -85,21 +84,17 @@ $result = $conn->query($sql);
             <li><a href="shop-grid.php">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
                     <li><a href="shoping-cart.php">Shoping Cart</a></li>
                     <li><a href="checkout.php">Check Out</a></li>
 
                 </ul>
             </li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="contact.php">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
     <div class="header__top__right__social">
-        <a href="#"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+
     </div>
     <div class="humberger__menu__contact">
         <ul>
@@ -156,7 +151,7 @@ $result = $conn->query($sql);
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="index.php"><img src="img/logo.png" alt=""></a>
+                    <a href="index.php"><img src="img/logo1.jpg" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -166,12 +161,12 @@ $result = $conn->query($sql);
                         <li class="active"><a href="shop-grid.php">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
+
                                 <li><a href="shoping-cart.php">Shoping Cart</a></li>
                                 <li><a href="checkout.php">Check Out</a></li>
                             </ul>
                         </li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="contact.php">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -204,7 +199,7 @@ $result = $conn->query($sql);
                         <li><a href="cat.php">Cat</a></li>
                         <li><a href="bird.php">Bird</a></li>
                         <li><a href="small_animals.php">Small animals</a></li>
-                        <li><a href="reptile.php">Raptiles</a></li>
+                        <li><a href="reptile.php">Reptiles</a></li>
                         <li><a href="fish.php">Fish</a></li>
                     </ul>
                 </div>
@@ -268,24 +263,11 @@ $result = $conn->query($sql);
                             <li><a href="cat.php">Cat</a></li>
                             <li><a href="bird.php">Bird</a></li>
                             <li><a href="small_animals.php">Small animals</a></li>
-                            <li><a href="reptile.php">Raptiles</a></li>
+                            <li><a href="reptile.php">Reptiles</a></li>
                             <li><a href="fish.php">Fish</a></li>
                         </ul>
                     </div>
-                    <div class="sidebar__item">
-                        <h4>Price</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                 data-min="10" data-max="540">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
-                            <div class="range-slider">
 
-                            </div>
-                        </div>
-                    </div>
                     <div class="sidebar__item sidebar__item__color--option">
                         <h4>All category</h4>
                         <div class="sidebar__item__color sidebar__item__color--green">
@@ -415,7 +397,7 @@ $result = $conn->query($sql);
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="index.php"><img src="img/logo.png" alt=""></a>
+                        <a href="index.php"><img src="img/logo1.jpg" alt=""></a>
                     </div>
                     <ul>
                         <li>Address: 60-49 Road 11378 New York</li>

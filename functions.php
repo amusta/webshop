@@ -297,7 +297,15 @@ function rating()
 
 	function add_to_cart( $id_user, $id_product) {
         global $conn;
-
+$id_pod=0;
+        $sql1="SELECT * FROM cart WHERE id_product=$id_product";
+        $result=mysqli_query($conn,$sql1);
+        while($row=$result->fetch_assoc()){
+            $id_pod=$row['id_product'];
+        }
+        if($id_pod==$id_product){
+            echo "You have this item in cart!";
+        }else {
 
             $sql = "INSERT INTO cart (ID_users, id_product) VALUES ($id_user, $id_product)";
 
@@ -308,7 +316,7 @@ function rating()
             } else {
                 echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
             }
-
+        }
 
     }
 

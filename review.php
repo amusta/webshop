@@ -64,14 +64,13 @@ if(!empty($_REQUEST['term'])){
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""></a>
+        <a href="#"><img src="img/logo1.jpg" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
-            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+
         </ul>
-        <div class="header__cart__price">item: <span>$150.00</span></div>
+
     </div>
     <div class="humberger__menu__widget">
         <?php if (isLoggedIn()){ ?>
@@ -97,12 +96,12 @@ if(!empty($_REQUEST['term'])){
             <li><a href="shop-grid.php">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
+
                     <li><a href="shoping-cart.php">Shoping Cart</a></li>
                     <li><a href="checkout.php">Check Out</a></li>
                 </ul>
             </li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="contact.php">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -160,7 +159,7 @@ if(!empty($_REQUEST['term'])){
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="index.php"><img src="img/logo.png" alt=""></a>
+                    <a href="index.php"><img src="img/logo1.jpg" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -170,22 +169,21 @@ if(!empty($_REQUEST['term'])){
                         <li class="active"><a href="shop-grid.php">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
+
                                 <li><a href="shoping-cart.php">Shoping Cart</a></li>
                                 <li><a href="checkout.php">Check Out</a></li>
                             </ul>
                         </li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="contact.php">Contact</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+
                 </div>
             </div>
         </div>
@@ -365,7 +363,7 @@ if(!empty($_REQUEST['term'])){
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="index.php"><img src="img/logo.png" alt=""></a>
+                        <a href="index.php"><img src="img/logo1.jpg" alt=""></a>
                     </div>
                     <ul>
                         <li>Address: 60-49 Road 11378 New York</li>
