@@ -248,6 +248,8 @@
                         <a href="admin/remove_user.php" class="site-btn" style="margin-bottom: 20px"  >REMOVE USER</a><br>
 
                          <a href="admin/add_product.php" class="site-btn" style="margin-bottom: 20px"> ADD PRODUCT</a><br>
+                         <a href="admin/remove-comment.php" class="site-btn" style="margin-bottom: 20px"> REMOVE COMMENTS</a><br>
+                        <a href="admin-analytics.php" class="site-btn" style="margin-bottom: 20px"> ANALYTICS</a>
                          <a href="index.php">Home page </a>
 
              </div>

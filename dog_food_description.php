@@ -413,7 +413,8 @@ while($row = $result->fetch_assoc()) {
                         </div>
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <p><?php echo comment() ?></p>
+                                <p><?php echo comment()  ?> </p>
+
 
 
                             </div>

@@ -1,35 +1,19 @@
 <?php
-
-include('functions.php');
 include ('connection.php');
+include ('functions.php');
 
 
 
-if(isset($_SESSION['user'])) {
-    $sql = "SELECT * FROM users WHERE ID_users='" .$_SESSION['user']['ID_users'] . "'";
-}
-else {
-    $sql = "SELECT * FROM users ";
-}
-$result = $conn->query($sql);
+$sql1 ="SELECT products.id_product,  products.img, products.name, analytics.amount, users.User_name
+FROM analytics
+INNER JOIN products  ON products.id_product =analytics.id_product
+ INNER JOIN users ON users.ID_users=analytics.ID_users ORDER BY users.User_name ASC ";
 
-
-if(!empty($_REQUEST['term'])) {
-    $term = $_REQUEST['term'];
-
-    $sql = "SELECT * FROM products WHERE name LIKE '%" . $term . "%' AND animal LIKE 'dog'";
-    $result = $conn->query($sql);
-}
-
-
-
-
-
-
-
+$result1=$conn->query($sql1);
 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -89,7 +73,7 @@ if(!empty($_REQUEST['term'])) {
         <?php } ?>
 
         <?php if (isAdmin()){ ?>
-            <a href="login/admin/home.php" class="button">AdminView</a>
+            <a href="admin-home.php" class="button">AdminView</a>
         <?php } ?>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -243,57 +227,69 @@ if(!empty($_REQUEST['term'])) {
 
 
 
-<?php
 
-while($row = $result->fetch_assoc()) {
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
 
-
-
-    ?>
-
-    <!-- Product Details Section Begin -->
-    <section class="product-details spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <h3>Welcome back</h3>
-                            <h3>  <?php echo  $row['User_name'];?></h3>
-
-                        </div>
-                        <a href="shoping-cart.php">If you like to visit your cart click here!</a>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>User name</th>
+                           <th> </th>
+                            <th>Name</th>
+                            <th>Quantity</th>
 
 
-                    </div>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php
+                        while($row = $result1->fetch_assoc()) {
+                        ?>
+
+                        <tr>
+                            <td>
+                                <h5><?php
+
+                                     echo $row['User_name']; ?></h5>
+                            </td>
+
+                            <td class="shoping__cart__item">
+                                <?php  echo '<img src="../img/'.$row["img"].'. "  class="featured__item__pic set-bg"  >'; ?> </a>
+                            </td>
+
+                            <td class="shopping__cart__name">
+                                <h5><?php echo $row['name'];  ?></h5>
+                            </td>
+                            <td>
+                                <?php echo $row['amount']; ?>
+                            </td>
+
+
+
+
+                        </tr>
+                        </tbody>
+                        <?php  }
+                              ?>
+                    </table>
+
                 </div>
-
-                    <div class="col-lg-6 col-md-6">
-                        <div class="product__details__text">
-                            <div style="margin-bottom: 10px">
-
-                            </div>
-                            <form action="create_pet.php">
-                                <input type="submit" value=" Create your pet profile" />
-                            </form>
-
-
-
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <?php echo pet_profile() ?>
-
             </div>
         </div>
-    </section>
-    <!-- Product Details Section End -->
+    </div>
+</section>
 
-<?php } ?>
+
+
+
+
+
 
 
 

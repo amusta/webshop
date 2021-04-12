@@ -392,6 +392,8 @@ global $conn;
         foreach ($rijeci as $rijec){
             {
                 array_push($dirty_word, $rijec);
+
+
             }
     }}
  foreach ($dirty_word as $dirty_words){
@@ -405,6 +407,28 @@ global $conn;
      echo $dirty_words;
      echo " ";
  }
+
+
+
+
+
+}
+
+function delete_comment($id){
+    global $conn;
+
+
+
+    $sql = "DELETE FROM review WHERE id='$id'";
+
+
+
+    if (mysqli_query($conn, $sql)) {
+
+        echo "<br/><br/><span>Deleted successfully...!!</span>";
+    } else {
+        echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
+    }
 
 }
 
@@ -538,6 +562,9 @@ function delete_cart_for_user($id_user ){
         $id_product=$row['id_product'];
 $sql3 ="UPDATE products SET quantity=quantity-$new_quantity WHERE id_product=$id_product";
             mysqli_query($conn,$sql3);
+            $sql4="INSERT INTO analytics (ID_users, id_product, amount)
+VALUES ($id_user, $id_product, $new_quantity)";
+            mysqli_query($conn,$sql4);
     }
 
 
@@ -546,8 +573,7 @@ $sql3 ="UPDATE products SET quantity=quantity-$new_quantity WHERE id_product=$id
 
 	 $sql="DELETE FROM cart WHERE ID_users=$id_user";
     if (mysqli_query($conn, $sql)){
-        echo " <h2>Your order has been received.</h2>
-                    <h2>Thank you for buying from us. </h2>";
+        echo " it's deleted";
     } else {
         echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
     }
@@ -612,6 +638,9 @@ function delete($id){
             echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
         }
     }
+
+
+
 
 
 

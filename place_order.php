@@ -329,7 +329,13 @@ if(!empty($_REQUEST['term'])){
 
 
                     <?php  echo "<a href='place_order.php?ID=" .$_SESSION ["user"]['ID_users'] .  "'>"  ; ?>
+
                     <button type="submit" name="delete_cart" class="site-btn">PLACE ORDER</button>
+                    <div class="popup" onclick="myFunction()">
+                    <span class="popuptext" id="myPopup">Your order has been received.
+                    Thank you for buying from us. </span>
+                    </div>
+
                     <?php
                     if (isset($_GET['ID'])) {
 
@@ -337,6 +343,10 @@ if(!empty($_REQUEST['term'])){
 
                     }
                     ?>
+                    <script> function myFunction() {
+                            var popup = document.getElementById("myPopup");
+                            popup.classList.toggle("show");
+                        }</script>
 
 
 

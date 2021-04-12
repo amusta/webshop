@@ -158,7 +158,6 @@
                         <li class="active"><a href="shop-grid.php">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
-                                <li><a href="./shop-details.html">Shop Details</a></li>
                                 <li><a href="shoping-cart.php">Shoping Cart</a></li>
                                 <li><a href="checkout.php">Check Out</a></li>
                             </ul>

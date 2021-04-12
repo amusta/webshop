@@ -1,35 +1,31 @@
-<?php
-
-include('functions.php');
-include ('connection.php');
 
 
+<?php include('../functions.php') ;
 
-if(isset($_SESSION['user'])) {
-    $sql = "SELECT * FROM users WHERE ID_users='" .$_SESSION['user']['ID_users'] . "'";
+
+if (!isAdmin()) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: ../login.php');
 }
-else {
-    $sql = "SELECT * FROM users ";
-}
-$result = $conn->query($sql);
 
+
+
+$sql ="SELECT users.User_name, review.comments, review.id
+FROM review
+INNER JOIN users  ON users.ID_users =review.ID_users";
+$result =$conn->query($sql);
 
 if(!empty($_REQUEST['term'])) {
     $term = $_REQUEST['term'];
 
-    $sql = "SELECT * FROM products WHERE name LIKE '%" . $term . "%' AND animal LIKE 'dog'";
+    $sql = "SELECT users.User_name, review.comments, review.id
+FROM review
+INNER JOIN users  ON users.ID_users =review.ID_users WHERE comments LIKE '%" . $term . "%'";
     $result = $conn->query($sql);
 }
-
-
-
-
-
-
-
-
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -46,14 +42,14 @@ if(!empty($_REQUEST['term'])) {
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 
 <body>
@@ -66,49 +62,59 @@ if(!empty($_REQUEST['term'])) {
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
     <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo1.jpg" alt=""></a>
+        <a href="#"><img src="../img/logo.png" alt=""></a>
     </div>
     <div class="humberger__menu__cart">
         <ul>
-
+            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
         </ul>
-
+        <div class="header__cart__price">item: <span>$150.00</span></div>
     </div>
     <div class="humberger__menu__widget">
-        <?php if (isLoggedIn()){ ?>
-            <div class="header__top__right__auth">
-                <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
-            </div>
-            <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
 
-            <?php    if(isset($_SESSION['user'])) { } ?>
-        <?php } else { ?>
+        <div class="header__top__right__auth">
 
-            <a href="login.php"><i class="fa fa-user"></i> Login</a>
+            <?php if (isLoggedIn()){ ?>
+                <div class="header__top__right__auth">
 
-        <?php } ?>
+                    <a href="../profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+                </div>
+                <a href="../logout.php"><i class="fa fa-user"></i> Logout</a>
 
-        <?php if (isAdmin()){ ?>
-            <a href="login/admin/home.php" class="button">AdminView</a>
-        <?php } ?>
+                <?php    if(isset($_SESSION['user'])) { } ?>
+            <?php } else { ?>
+
+                <a href="../login.php"><i class="fa fa-user"></i> Login</a>
+
+            <?php } ?>
+
+
+            <?php if (isAdmin()){ ?>
+                <a href="../admin-home.php" class="button">AdminView</a>
+            <?php } ?>
+
+        </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="shop-grid.php">Shop</a></li>
+            <li class="active"><a href="../index.php">Home</a></li>
+            <li><a href="../shop-grid.php">Shop</a></li>
             <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
 
-                    <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                    <li><a href="checkout.php">Check Out</a></li>
+                    <li><a href="../shoping-cart.php">Shoping Cart</a></li>
+                    <li><a href="../checkout.php">Check Out</a></li>
+
                 </ul>
             </li>
-            <li><a href="contact.php">Contact</a></li>
+            <li><a href="../contact.php">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
+    <div class="header__top__right__social">
 
-
+    </div>
     <div class="humberger__menu__contact">
         <ul>
             <li><i class="fa fa-envelope"></i> autosender101@gmail.com</li>
@@ -118,6 +124,8 @@ if(!empty($_REQUEST['term'])) {
 </div>
 <!-- Humberger End -->
 
+
+
 <!-- Header Section Begin -->
 <header class="header">
     <div class="header__top">
@@ -126,62 +134,67 @@ if(!empty($_REQUEST['term'])) {
                 <div class="col-lg-6">
                     <div class="header__top__left">
                         <ul>
-                            <li><i class="fa fa-envelope"></i>autosender101@gmail.com</li>
+                            <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
                             <li>Free Shipping for all Order of $99</li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="header__top__right">
-
                         <div class="header__top__right__auth">
                             <?php if (isLoggedIn()){ ?>
-                            <a href="profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+                                <div class="header__top__right__auth">
+
+                                    <a href="../profile.php"><i class="fa fa-user-circle"></i>Profile</a>
+                                </div>
+                                <a href="../logout.php"><i class="fa fa-user"></i> Logout</a>
+
+                                <?php    if(isset($_SESSION['user'])) { } ?>
+                            <?php } else { ?>
+
+                                <a href="../login.php"><i class="fa fa-user"></i> Login</a>
+
+                            <?php } ?>
+
+
+                            <?php if (isAdmin()){ ?>
+                                <a href="../admin-home.php" class="button">AdminView</a>
+                            <?php } ?>
                         </div>
-                        <a href="logout.php"><i class="fa fa-user"></i> Logout</a>
-
-                        <?php    if(isset($_SESSION['user'])) { } ?>
-                        <?php } else { ?>
-
-                            <a href="login.php"><i class="fa fa-user"></i> Login</a>
-
-                        <?php } ?>
-
-
-                        <?php if (isAdmin()){ ?>
-                            <a href="admin-home.php" class="button">AdminView</a>
-                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="index.php"><img src="img/logo1.jpg" alt=""></a>
+                    <a href="../index.php"><img src="../img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li><a href="index.php">Home</a></li>
-                        <li class="active"><a href="shop-grid.php">Shop</a></li>
+                        <li><a href="../index.php">Home</a></li>
+                        <li class="active"><a href="../shop-grid.php">Shop</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
 
-                                <li><a href="shoping-cart.php">Shoping Cart</a></li>
-                                <li><a href="checkout.php">Check Out</a></li>
+                                <li><a href="../shoping-cart.php">Shoping Cart</a></li>
+                                <li><a href="../checkout.php">Check Out</a></li>
+
                             </ul>
                         </li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="../contact.php">Contact</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-3">
                 <div class="header__cart">
+                    <ul>
+
+                    </ul>
 
                 </div>
             </div>
@@ -204,12 +217,12 @@ if(!empty($_REQUEST['term'])) {
                         <span>All pets</span>
                     </div>
                     <ul>
-                        <li><a href="dog.php">Dog</a></li>
-                        <li><a href="cat.php">Cat</a></li>
-                        <li><a href="bird.php">Bird</a></li>
-                        <li><a href="small_animals.php">Small animals</a></li>
-                        <li><a href="reptile.php">Raptiles</a></li>
-                        <li><a href="fish.php">Fish</a></li>
+                        <li><a href="../dog.php">Dog</a></li>
+                        <li><a href="../cat.php">Cat</a></li>
+                        <li><a href="../bird.php">Bird</a></li>
+                        <li><a href="../small_animals.php">Small animals</a></li>
+                        <li><a href="../reptile.php">Raptiles</a></li>
+                        <li><a href="../fish.php">Fish</a></li>
                     </ul>
                 </div>
             </div>
@@ -242,61 +255,54 @@ if(!empty($_REQUEST['term'])) {
 <!-- Hero Section End -->
 
 
+<!-- Login -->
 
-<?php
+<div class="container">
+    <div class="row">
 
-while($row = $result->fetch_assoc()) {
-
-
-
-    ?>
-
-    <!-- Product Details Section Begin -->
-    <section class="product-details spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <h3>Welcome back</h3>
-                            <h3>  <?php echo  $row['User_name'];?></h3>
-
-                        </div>
-                        <a href="shoping-cart.php">If you like to visit your cart click here!</a>
-
-
-                    </div>
-                </div>
-
-                    <div class="col-lg-6 col-md-6">
-                        <div class="product__details__text">
-                            <div style="margin-bottom: 10px">
-
-                            </div>
-                            <form action="create_pet.php">
-                                <input type="submit" value=" Create your pet profile" />
-                            </form>
+            <?php
 
 
 
+            if ($result->num_rows > 0){
 
-                        </div>
-                    </div>
+                while($row = $result->fetch_assoc()) {
+                    ?>
 
-                </div>
-
-
-                <?php echo pet_profile() ?>
-
-            </div>
-        </div>
-    </section>
-    <!-- Product Details Section End -->
-
-<?php } ?>
+        <div class="col-lg-4 ">
+                <h5>User name: <?php echo $row["User_name"];  ?></a></h5>
 
 
+            <h6><?php echo $row['comments'];  ?></h6>
+            <?php
 
+if (isAdmin()) {
+    echo "<a href='remove-comment.php?ID=" . $row["id"] . "' ><button type=\"button\" class=\"btn btn-danger btn-sm\">Delete</button></a> ";
+}
+if (isAdmin()) {
+
+    if (isset($_GET['ID'])) {
+        delete_comment($_GET['ID']);
+
+    }
+}
+?>
+
+
+</div>
+
+
+
+                <?php }
+            } else { echo "0 results"; }
+            ?>
+
+    </div>
+</div>
+
+
+
+<!-- End of login -->
 
 <!-- Footer Section Begin -->
 <footer class="footer spad">
@@ -305,7 +311,7 @@ while($row = $result->fetch_assoc()) {
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="index.php"><img src="img/logo1.jpg" alt=""></a>
+                        <a href="../index.php"><img src="../img/logo.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Address: 60-49 Road 11378 New York</li>
@@ -358,7 +364,7 @@ while($row = $result->fetch_assoc()) {
                     <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
-                    <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                    <div class="footer__copyright__payment"><img src="../img/payment-item.png" alt=""></div>
                 </div>
             </div>
         </div>
@@ -367,14 +373,16 @@ while($row = $result->fetch_assoc()) {
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.nice-select.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/jquery.slicknav.js"></script>
-<script src="js/mixitup.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
+            <script src="../js/jquery-3.3.1.min.js"></script>
+            <script src="../js/bootstrap.min.js"></script>
+            <script src="../js/jquery.nice-select.min.js"></script>
+            <script src="../js/jquery-ui.min.js"></script>
+            <script src="../js/jquery.slicknav.js"></script>
+            <script src="../js/mixitup.min.js"></script>
+            <script src="../js/owl.carousel.min.js"></script>
+            <script src="../js/main.js"></script>
+
+
 
 
 </body>

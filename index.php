@@ -78,7 +78,7 @@ include ('connection.php');
 
 
                 <?php if (isAdmin()){ ?>
-                    <a href="login/admin/home.php" class="button">AdminView</a>
+                    <a href="admin-home.php" class="button">AdminView</a>
                 <?php } ?>
 
             </div>
