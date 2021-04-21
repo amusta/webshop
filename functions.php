@@ -551,21 +551,31 @@ function delete_cart_for_user($id_user ){
 	    global $conn;
 
 
-    $sql1 ="SELECT products.id_product, cart.quantity
+
+    $sql1 ="SELECT products.id_product, cart.quantity, users.ID_users
             FROM cart
             INNER JOIN products  ON products.id_product =cart.id_product
             INNER JOIN users ON users.ID_users=cart.ID_users  WHERE cart.ID_users=$id_user";
     $result = $conn->query($sql1);
 
-    while($row=$result->fetch_assoc()){
-        $new_quantity=$row['quantity'];
-        $id_product=$row['id_product'];
-$sql3 ="UPDATE products SET quantity=quantity-$new_quantity WHERE id_product=$id_product";
-            mysqli_query($conn,$sql3);
-            $sql4="INSERT INTO analytics (ID_users, id_product, amount)
+    while($row=$result->fetch_assoc()) {
+        $new_quantity = $row['quantity'];
+        $id_product = $row['id_product'];
+
+        $sql3 = "UPDATE products SET quantity=quantity-$new_quantity WHERE id_product=$id_product";
+        mysqli_query($conn, $sql3);
+        if ($id_user == $id_user || $id_product == $id_product) {
+            $sql4 = "UPDATE analytics SET amount=amount+$new_quantity WHERE id_product=$id_product";
+            mysqli_query($conn, $sql4);
+        } else {
+
+            $sql5 = "INSERT INTO analytics (ID_users, id_product, amount)
 VALUES ($id_user, $id_product, $new_quantity)";
-            mysqli_query($conn,$sql4);
+
+            mysqli_query($conn, $sql5);
+        }
     }
+
 
 
 
@@ -573,7 +583,7 @@ VALUES ($id_user, $id_product, $new_quantity)";
 
 	 $sql="DELETE FROM cart WHERE ID_users=$id_user";
     if (mysqli_query($conn, $sql)){
-        echo " it's deleted";
+
     } else {
         echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
     }
