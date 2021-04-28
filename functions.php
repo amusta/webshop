@@ -304,8 +304,10 @@ $id_pod=0;
             $id_pod=$row['id_product'];
         }
         if($id_pod==$id_product){
-            echo "You have this item in cart!";
-        }else {
+
+                 echo  "You have this item in cart!";
+
+         }else {
 
             $sql = "INSERT INTO cart (ID_users, id_product) VALUES ($id_user, $id_product)";
 
@@ -583,10 +585,15 @@ VALUES ($id_user, $id_product, $new_quantity)";
 
 	 $sql="DELETE FROM cart WHERE ID_users=$id_user";
     if (mysqli_query($conn, $sql)){
+        echo "Your purchase has been received. 
+        Thank you for buying.";
 
     } else {
         echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
     }
+
+
+
 
 
 
@@ -595,7 +602,7 @@ function remove_pet(  $id_pet){
     global $conn;
     $sql= "DELETE FROM pet WHERE  pet_id=$id_pet ";
     if (mysqli_query($conn, $sql)){
-        echo "<br/><br/><span>Deleted successfully...!!</span>";
+        echo "";
     } else {
         echo "Error: CAN'T DELETE  <br> DETAILS:" . $sql . "<br>" . mysqli_error($conn);
     }

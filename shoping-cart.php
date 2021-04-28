@@ -241,7 +241,7 @@ if(!empty($_REQUEST['term'])){
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/hero/pet.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">

@@ -251,7 +251,7 @@ if(!empty($_REQUEST['term'])){
 <!-- Hero Section End -->
 
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="img/hero/pet.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -332,20 +332,7 @@ if(!empty($_REQUEST['term'])){
 
                     <button  type="submit" name="delete_cart" class="site-btn" >PLACE ORDER</button>
 
-                    <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <span class="close">&times;</span>
-                            <h2>Squirrel shop</h2>
-                        </div>
-                        <div class="modal-body">
-                            <p>Your order has been received.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <h3>Thank you for buying from us.</h3>
-                        </div>
-                    </div>
-                    </div>
+
 
 
                     <?php
@@ -447,33 +434,7 @@ if(!empty($_REQUEST['term'])){
 <script src="js/mixitup.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
-<script> // Get the modal
 
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 
 
 

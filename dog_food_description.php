@@ -363,11 +363,24 @@ while($row = $result->fetch_assoc()) {
                      <?php  echo "<a href='dog_food_description.php?ID=" . $row["id_product"] . "&id_user=" . $_SESSION ["user"]['ID_users'] . "'  class=\"primary-btn\" name=\"add\">ADD TO CART "  ; ?>
                        <?php  echo "<a href='review.php?ID=" . $row["id_product"] . "' class=\"primary-btn\" > Review " ;  ?>
 
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <a href="#" ></a>
                     <?php } else { ?>
                     <span>You need to be logged in to buy.</span>
                     <?php } ?>
+                    <?php
 
+                    if (isset($row["id_product"])) {
+                        if( isset($_GET['id_user'])) {
+
+                            add_to_cart($_SESSION ["user"]['ID_users'], $row["id_product"]  );
+                        }
+                    }
+                    break;
+
+
+
+                    ?>
+                    <?php } ?>
 
 
 
@@ -427,20 +440,7 @@ while($row = $result->fetch_assoc()) {
 </section>
 
 <!-- Product Details Section End -->
-    <?php
 
-    if (isset($row["id_product"])) {
-        if( isset($_GET['id_user'])) {
-
-            add_to_cart($_SESSION ["user"]['ID_users'], $row["id_product"]  );
-        }
-    }
-    break;
-
-
-
-    ?>
-<?php } ?>
 
 
 
